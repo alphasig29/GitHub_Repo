@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Objects</title>
+<style>
+    body {padding: 30px;}
+</style>
+</head>
+<body>
+    
+<!-- Begin JavaScript here -->
+<script>
+    const hero = {
+        name: 'Bruce Wayne',
+        alias: 'Batman',
+        catchphrase: 'To the batcave!',
+        speak: function() {
+            return 'Attention ' + this.catchphrase;
+        },
+        attack: function(sound) {
+            //return '(punches bad guy) ' + sound;
+            return `(punches bad guy) ${sound}`;
+        }
+    };
+
+    // accesa  property
+    const thingToLookfor = 'alias';
+
+
+    console.log(hero.name); //Bruce Wayne
+    console.log(hero['name']); // Bruce Wayne
+    console.log(hero[thingToLookfor]); // Batman
+
+    // acccessing methods
+    console.log(hero.speak);
+    console.log(hero.speak());
+    console.log(hero.attack('POWWWWW'));
+
+    // this shows up in the console for the instructor, but not mine.
+    'this is my string'.toUpperCase();
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Functions</title>
+    <style>
+        body {padding: 30px;}
+    </style>
+</head>
+<body>
+    
+    <div class="jumbotron text-center">
+        <button type="buton" class="btn btn-danger" onclick="saySomething('this is the first button')">My Button</button>
+        <button type="buton" class="btn btn-danger" onclick="saySomething('this is the second button')">My 2nd Button</button>
+    </div>
+
+<!-- Begin Java Script -->
+    <script>
+        function saySomething(message='goodbye', whisper = false){
+            if (whisper) {
+                console.log(`%c${message}`, 'font-size:5px');
+            }else {
+                console.log(message);
+            }
+        }
+        saySomething('hello', true);
+        saySomething();
+
+        // function squared(a){
+        //     return a*a;
+        // }
+        //console.log(squared(3));
+
+        // version 1
+    //    const squared = function squared(a){
+    //         return a*a;
+    //     } 
+
+        punch();  //declared later in the code.
+
+        //version 2 - (version 1 using the arrow 
+        //  - called hoisting, which allows the function to be called before the function declaration)
+        const squared = (a) => {
+            return a*a;
+        }         
+        const otherSquared = squared;
+
+        function punch() {
+            console.log('punch');
+        }
+
+    </script>
+</body>
+</html>

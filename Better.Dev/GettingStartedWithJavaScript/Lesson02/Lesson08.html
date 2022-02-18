@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {padding: 30px;}
+        .dogs-list {
+            text-transform: uppercase;
+            color: blue;}
+    </style>
+    <title>Conditionals, Flows, Loops</title>
+
+</head>
+<body>
+    <div class="dogs-list"></div>
+
+
+
+<!--  Start JavaScript-->
+<script>
+
+const dogsList = document.querySelector('.dogs-list');
+const dogs = [
+	{name: 'bruce', type: 'chihuahua'},
+	{name: 'chance', type: 'bernese'}
+];
+
+// for loop
+/*
+for (let i = 0; i < dogs.length; i++) {
+    // grab the dog
+    const dog           = dogs[i];
+    const dogData       = document.createElement('div');
+    dogData.classList.add('jumbotron', 'text-center');
+    dogData.innerText   = `${dog.name} is a ${dog.type}`;
+    dogsList.appendChild(dogData);
+}
+*/
+
+// While loop
+/*
+let i = 0;
+while (i < dogs.length) {
+    // grab the dog
+    const dog           = dogs[i];
+    const dogData       = document.createElement('div');
+    dogData.classList.add('jumbotron', 'text-center');
+    dogData.innerText   = `${dog.name} is a ${dog.type}`;
+    dogsList.appendChild(dogData);
+
+    // increment our loop integer
+    i++;
+}
+*/
+
+// do while loop
+/*
+let i=0;
+do {
+    // grab the dog
+    const dog           = dogs[i];
+    const dogData       = document.createElement('div');
+    dogData.classList.add('jumbotron', 'text-center');
+    dogData.innerText   = `${dog.name} is a ${dog.type}`;
+    dogsList.appendChild(dogData);
+
+    // increment our loop integer
+    i++;
+} while(i < dogs.length);
+*/
+
+// for.. of iteration
+for (let dog of dogs){
+    const dogData       = document.createElement('div');
+    dogData.classList.add('jumbotron', 'text-center');
+    dogData.innerText   = `${dog.name} is a ${dog.type}`;
+    dogsList.appendChild(dogData);    
+}
+
+</script>
+
+</body>
+</html>
