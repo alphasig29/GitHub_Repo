@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Built-in Objects</title>
+    <style>
+        body {padding: 30px;}
+    </style>
+</head>
+<body>
+    
+
+    <!-- Begin the Java Script -->
+<script>
+    const first = 'this is a string';
+    const second = String('this is a string');
+
+console.groupCollapsed("Primitives vs Objects");
+    console.log(first === second);   // true
+    console.log(
+        typeof first,
+        typeof String('this is a stirng'),
+        typeof new String()
+    );  // string string object
+console.groupEnd();
+
+const sentence = 'this is  my sentence';
+console.groupCollapsed("String");
+    console.log(first.toUpperCase());
+    console.log(second.toLowerCase());
+    console.log(sentence.startsWith('this is'));
+    // [Windows] = [.] will show the emoji search console.
+    console.log('🍺'.repeat(25));
+    console.log('lot at me gooo              '.trim());
+    console.log()
+console.groupEnd();
+
+
+console.groupCollapsed('Numbers and Math');
+    console.log(1..toString());  //'..' JS knows the .toString is a method
+    console.log((1).toString()); // JS knwos 1 is a number
+    console.log(Number.isInteger(5)); // true, checking
+    console.log(Number.isInteger(5.43)); // false, is float
+    console.log((1.2657).toFixed(2)); //1.27
+    console.log(
+        Math.random().toFixed(2),
+        Math.ceil(1.56), // 2
+        Math.floor(6.3) //6
+    );
+console.groupEnd();
+
+
+const myArray = ['chris', 'nick', 'holly'];
+console.group('Arrays');
+    console.log(myArray.length);
+    console.log(myArray.join('-')); // chris-nick-holly
+    console.log(myArray.push('ado'), myArray);
+    console.log(myArray.pop('ado'), myArray); // don't need ado
+    //console.log(myArray.pop(), myArray);  // takes off the last item
+    myArray.forEach(function(user){
+        console.log(user);
+    });
+
+    //same as above, using the arrow function
+    myArray.forEach((user) => console.log(user));
+
+console.groupEnd();
+
+
+
+</script>
+
+</body>
+</html>
