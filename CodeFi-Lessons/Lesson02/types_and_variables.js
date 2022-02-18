@@ -74,11 +74,11 @@ function arrayOfMultiples(num, length) {
     return returnArray;
 
 };
-console.log("array: arrayOfMultiples(7, 5)")
-console.log(arrayOfMultiples(7, 5));
+console.log("array: arrayOfMultiples(7, 5) is " + arrayOfMultiples(7, 5));
+//console.log(arrayOfMultiples(7, 5));
 
-console.log("array: arrayOfMultiples(12, 10)")
-console.log(arrayOfMultiples(12, 10));
+console.log("array: arrayOfMultiples(12, 10) is " + arrayOfMultiples(12, 10));
+//console.log(arrayOfMultiples(12, 10));
 
-console.log("array: arrayOfMultiples(17, 6)")
-console.log(arrayOfMultiples(17, 6));
+console.log("array: arrayOfMultiples(17, 6) is " + arrayOfMultiples(17, 6));
+//console.log(arrayOfMultiples(17, 6));
