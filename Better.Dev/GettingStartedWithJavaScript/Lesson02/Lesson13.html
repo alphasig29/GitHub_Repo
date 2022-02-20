@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Pricing Calculator</title>
+    <style>
+        body, 
+        .jumbotron      {padding: 30px;}
+        .text-giant     {font-size: 50px;}
+        .quantity-label {padding: 5px;, font-style: color: 'white';}
+
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h2>How much do pies cost?</h2>
+
+        <form>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" 
+                    name="price" value="30">
+            </div>
+        
+            <div class="form-group">
+                <label for="quantity">Quantity
+                    <span class="lavel label-primary quantity-label">1</span>
+
+                </label>
+                <!-- <input type="number" class="form-control"  -->
+                    <!-- name="quantity" value="1"> -->
+                <input type="range" class="form-control" 
+                    name="quantity" value="1" min="1" max="10" step="1">
+
+            </div>     
+        </form>
+
+        <!-- display the cost outsice of the form -->
+        <div class="text-right text-giant total">$30</div>
+
+    </div>
+
+    <!-- 🔥🔥🔥🔥 Begin the JavaScript 🔥🔥🔥🔥 --> 
+    <script>
+        //  grab everything we need from DOM
+        const priceInput    = document.querySelector("[name=price]");
+        const quantityInput = document.querySelector("[name=quantity]");
+        const total         = document.querySelector(".total");
+        const quantityLabel = document.querySelector(".quantity-label");
+
+        // create the functions that we'll need
+        function calculatePieCost() {
+            const price = priceInput.value;
+            const quantity = quantityInput.value;
+
+            // calc the total cost
+            const cost = price * quantity;
+            console.log(cost);
+            total.innerText = '$' + cost.toFixed(2);
+        }
+
+        function updateQuantityLabel(){
+            //const quantity = quantityInput.value;
+            quantityLabel.innerText = quantityInput.value;
+        }
+
+        // on first run
+        calculatePieCost();
+
+        // add our event listeners
+        priceInput.addEventListener('input', calculatePieCost);
+        quantityInput.addEventListener('input', calculatePieCost);
+        quantityInput.addEventListener('input', updateQuantityLabel);
+
+
+    </script>
+</body>
+</html>
