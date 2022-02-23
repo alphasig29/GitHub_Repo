@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        body, 
+        .jumbotron      {padding: 30px;}
+        .text-giant     {font-size: 40px;}
+        .btn-crazy      {
+            position: absolute;
+            top: 30px;
+            left: 35%;
+            width: 30%;
+            transition: 0.2s ease all; /* the lower the 's' the faster the buttons move */
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button type="button" class="btn-crazy btn btn-lg btn-danger" >Click Me!</button>
+    <button type="button" class="btn-crazy btn btn-lg btn-primary" >Click Me!</button>
+    <button type="button" class="btn-crazy btn btn-lg btn-success" >Click Me!</button>
+    <button type="button" class="btn-crazy btn btn-lg btn-danger" >Click Me!</button>
+
+
+
+<!-- 🔥🔥🔥🔥 Begin JavaScript 🔥🔥🔥🔥 -->
+    <script>
+    // grab everything we need
+
+    const crazyButtons = document.querySelectorAll('.btn-crazy');
+    // define out functions
+        function goCrazy(e){
+            // now that we ahve multiple buttons, we cannot reference 'crasyButton' DNE
+            //console.log(e);
+            const button = e.target;
+
+            // get a random number for left offset
+            // random num for top offset
+            const offsetLeft = Math.random() * (window.innerWidth - button.clientWidth);
+            const offsetTop = Math.random() * (window.innerHeight - button.clientHeight);
+            //crazyButton.clientWidth -> button width
+            // instead of referencing 'button', can use the 'this' object
+
+            
+            // console.log(offsetLeft, offsetTop);
+
+            // apply those nubmers to the button
+            button.style.top = offsetTop + 'px';
+            button.style.left = offsetLeft + 'px';
+
+
+        }
+
+    // add event listeners
+    crazyButtons.forEach(button => button.addEventListener('mouseenter', goCrazy));
+
+    </script>
+
+</body>
+</html>
