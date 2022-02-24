@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <title>Stopwatch</title>
+    <style>
+        body, .jumbotron {padding: 30px;}
+        .timer          {font-size: 120px;}
+        .btn-crazy      {
+            position: absolute;
+            top: 30px;
+            left: 35%;
+            width: 30%;
+            transition: 0.2s ease all; /* the lower the 's' the faster the buttons move */
+            text-align: center;
+        }
+
+    </style>    
+
+</head>
+<body>
+    <div class="jumbotron text-center">
+
+        <!-- timer -->
+        <div class="timer">
+            <span class="minutes">00</span> : <span class="seconds">00</span>
+        </div>
+
+        <!-- timer buttons -->
+        <div class=""timer-buttons>
+            <!-- you can use 'data-' and any word after to create you own types for JS -->
+            <button class="btn btn-lg btn-success" data-action="start">Start</button>
+            <button class="btn btn-lg btn-danger" data-action="stop">Stop</button>
+            <button class="btn btn-link btn-block" data-action="reset">Reset</button>
+        </div>
+
+    </div>
+
+
+   <!-- 🔥🔥🔥🔥 Begin JavaScript 🔥🔥🔥🔥 -->
+   <script>
+        const startButton = document.querySelector("[data-action='start']");
+        const stopButton = document.querySelector("[data-action='stop']");
+        const resetButton = document.querySelector("[data-action='reset']");
+        const minutes = document.querySelector(".minutes");
+        const seconds = document.querySelector(".seconds");
+        let timerTime = 0;
+        let isRunning = false;
+        let interval;
+
+        // setInterval(function() {
+        //     //console.count('hello');
+        //     timerTime ++;
+        //     const numOfMinutes = Math.floor(timerTime / 60);
+        //     const numOfSeconds = timerTime % 60;  //modulo -> finding the remainder
+        //     //console.log({ numOfMinutes, numOfSeconds});
+
+        //     minutes.innerText = pad(numOfMinutes);
+        //     seconds.innerText = pad(numOfSeconds);
+        // }, 1000); 
+
+        function startTimer() {
+            if (isRunning) return;
+
+            console.log(isRunning);
+ 
+            isRunning = true;
+            interval = setInterval(incrementTimer, 1000);                
+        }
+
+        function stopTimer() {
+            if (!isRunning) return;
+
+            //console.log('stopping');
+            isRunning = false;
+            clearInterval(interval);
+        }
+
+        function resetTimer() {
+            stopTimer();
+
+            timerTime = 0;
+            minutes.innerText = '00';
+            seconds.innerText = '00';
+
+        }
+
+        function incrementTimer() {
+            //console.count('hello');
+            timerTime ++;
+            const numOfMinutes = Math.floor(timerTime / 60);
+            const numOfSeconds = timerTime % 60;  //modulo -> finding the remainder
+            //console.log({ numOfMinutes, numOfSeconds});
+
+            minutes.innerText = pad(numOfMinutes);
+            seconds.innerText = pad(numOfSeconds);           
+        }
+
+        // remember that this is HOISTED to the top of the JavaScript section, 
+        //  so it can be used in the functions above.
+        function pad(number) {
+            // if(number <10){
+            //     return '0'+ number;
+            // } else {
+            //     return number;
+            // }
+            return (number < 10) ? '0' + number : number;
+        }
+
+
+
+        startButton.addEventListener('click', startTimer);
+        stopButton.addEventListener('click', stopTimer);
+        resetButton.addEventListener('click', resetTimer);
+
+
+
+    </script>    
+</body>
+</html>
