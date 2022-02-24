@@ -1,0 +1,100 @@
+(`${name} became a developer by learning with Codefi`)
+
+return variable;
+
+Arrow functions
+
+object
+const student = {
+	name: 'Jamie',
+	age: 44,
+	shouldBuildMoreProject: true,
+	introduce: function() {
+		console.log(`Hi! I'm ${this.name}`);
+	},
+	motivate: function(reason){
+		console.log("I want to ... ${reason}`);
+	}
+};
+
+
+student.name == student["name"]
+
+object with variable
+const filterWord = "name"
+student[filterWord] -this works
+
+-----------------------------------
+
+the WINDOW
+--------------------------------------
+STRINGS
+myString.split("") -> splits into individual characters
+myString.replace("to be replaced", "new text") -> replaces
+
+NUMBERS
+myNumber - JavaScript will round after a lot of digits, like Pi
+myNumber.toString()
+Number.isInteger(myNumber) - returns T/F
+myNumber.toFixed(2)  - limit to 2 decimal places
+isNaN(myNumber) - returns false when myNumber is a valid number
+
+MATH
+Math.random(); - random between 0 and 1
+Math.floor(3.9); = 3
+Math.ceil(3.1); = 4
+Math.round(3.49) = 3
+Math.round(3.51) = 4
+Math.min(2,5,1,8,7,9,9); - returns lowest value
+Math.max() - returns largest value
+
+
+DATES
+Date.now() - some number like a DB
+new Date().getDate() - gets 21 on Feb 21
+new Date().toDateString() - something wordy/readible
+.getHours
+.getMinutes
+.getSeconds
+.getYear
+.getDay
+
+DOCUMENT methods
+in Console:
+document.body.style.background = 'blue';
+Document.title
+document.URL
+document.images
+.querySelector("h1")
+.createElement("h2")
+
+
+ARRAYS
+const myArray = [1, 'hello', flase, 20, true]
+myArray.length
+myArray.push('') - adds to end of array
+myArray.pop() - removes last item in array
+myArray.includes('hello') - T/F
+myArray.indexOf('hello') - integer of the index, 0-based, -1 if item not in Array
+
+other valuable methods:
+forEach
+splice
+slice
+filter
+map
+sort
+every
+some
+reduce
+
+
+---------------------------------------
+
+
+
+
+
+
+
+
