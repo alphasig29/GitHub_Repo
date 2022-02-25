@@ -98,7 +98,7 @@
         function stopClock(){
             //console.log(clockInterval);
             if(clockInterval != undefined) {
-                console.log('stopping the clock');
+                //console.log('stopping the clock');
                 clearInterval(clockInterval);
                 clockInterval = undefined;
             };          

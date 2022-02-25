@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <title>Floating Input</title>
+    <!--  -->
+    <style>
+        body, .jumbotron {padding: 30px;}
+        body {
+            background-image:  url('images/moon.jpg');
+            background-size: cover;
+        }
+        .content {
+            font-size: 19px;
+            line-height: 1.5;            
+            max-width: 500px;            
+            margin: 0 auto;  
+            position: relative;
+            border-radius: 5px;
+        }
+        .floater {
+            background: #FFF;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4) all;
+            margin-bottom: 30px;
+            z-index: 11;
+        }
+        .floater input[type=text] {
+            padding: 20px 30;
+            border: none;
+            box-shadow: none;
+            font-size: 14px;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4) all;
+        }    
+        .floater-bottom {
+            padding: 6px 10px 8px;
+            text-align: right;
+            border-top: 1px solid #DDD;
+        }
+        .floater-bottom button{
+            padding: 4px 8px;
+            font-size: 10px;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,0.80);
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: 0.3s ease opacity;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        body.show-floater .floater {
+            transform: scale(1.1);
+        }
+        body.show-floater .floater input[type=text] {
+            padding: 50px 20px;
+            font-size: 18px;
+        }
+        body.show-floater .overlay {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        /* ====== bookmarks section ================== */
+        .bookmarks-list{
+            z-index: 9;
+            position: relative;
+        }
+        .bookmark {
+            display: flex;
+            background: #FFF;
+            position: relative;
+            color:#999;
+            padding: 20px;
+            transition: 0.3s ease all;
+            border-bottom: 1px solid #DDD;
+            font-size: 16px;
+        }
+        .bookmark:hover {
+            color: #1CE;
+            text-decoration: none;
+        }
+        .bookmark:first-child {
+           border-top-left-radius: 5px;
+           border-top-right-radius: 5px;
+        }
+        .bookmark:last-child {
+           border-bottom-left-radius: 5px;
+           border-bottom-right-radius: 5px;
+           border-bottom: 0;
+        }
+        .bookmark .img {
+            background-color: #DDD;
+            border-radius: 3px;
+            background-image: url('https://avatars.githubusercontent.com/u/99698498?v=4');
+            background-size: cover;
+            background-position: top center;
+            width: 120px;
+            height: 60px;
+            margin-right: 20px;
+        }
+
+        .bookmark .title {
+            display: flex;
+            align-items: center;
+        }
+        .bookmark .glyphicon-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #EEE;
+            font-size: 12px;
+            transition: 0.3s ease color;
+            cursor: pointer;
+        }
+        .bookmark:hover .glyphicon-remove {
+            color: #AAA;
+        }
+
+        </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <div class="floater content">
+        <form class="bookmark-form">
+            <div class="floater-top">
+                <input type="text" class="form-control" placeholder="What's on your mind?"">
+            </div>
+            <div class="floater-bottom">
+                <button type="submit" class="btn btn-primary btn-sa">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="bookmarks-list content"></div>
+
+    <!-- 🔥🔥🔥🔥 Begin JavaScript 🔥🔥🔥🔥 -->
+    <script>
+        // INPUT BOX AREA ==========================================
+        const body = document.body;
+        const input = document.querySelector('input[type=text]');
+        const overlay = document.querySelector('.overlay');
+
+        // INPUT BOX 
+        function showFloater() {
+            body.classList.add('show-floater');
+        }
+
+        function closeFloater() {
+            if (body.classList.contains('show-floater')) {
+                body.classList.remove('show-floater');
+            };            
+        }
+
+        input.addEventListener('focusin', showFloater);
+        // input.addEventListener('focusout', closeFloater);
+        overlay.addEventListener('click', closeFloater);
+
+
+        // BOOKMARK AREA ========================================
+        //localStorage.setItem('my_thing', 'something');
+        //curl https://opengraph.io/api/1.1/site/url_encoded_link
+
+
+        const bookmarksList = document.querySelector('.bookmarks-list');
+        const bookmarkForm  = document.querySelector('.bookmark-form');
+        const bookmarkInput = bookmarkForm.querySelector('input[type=text');
+        const bookmarks     = JSON.parse(localStorage.getItem('bookmarks')) || [];
+        const apiUrl        = 'https://opengraph.io/api/1.0/site';
+        const appId         = '58858c7bcf07b61e64257391';
+
+        //const myUrl = encodeURIComponent('https://www.digitalocean.com/community/tutorials/trashed--how-to-work-with-files-using-streams-in-node-js');
+
+        //load the page with the any existing bookmarks
+        fillBookmarksList(bookmarks); // add localStorage bookmarks to array of objects
+        
+        
+        function createBookmark(e) {
+            e.preventDefault();
+
+            // handle no imput
+            if (!bookmarkInput.value) {
+                alert('please enter a url');
+                return;
+            };
+
+            //grab the url from the form
+            const url = encodeURIComponent(bookmarkInput.value);
+
+            // add a new bookmark to the bookmarks
+            fetch(`${apiUrl}/${url}?app_id=${appId}`)
+            //fetch(apiUrl + '/' + myUrl + '?app_id=' + appId)
+                .then(response => response.json())
+                .then(data => {
+                    const bookmark  = {
+                        title: data.hybridGraph.title,
+                        image: data.hybridGraph.image,
+                        link: data.hybridGraph.url
+                    };
+                    bookmarks.push(bookmark);
+                    fillBookmarksList(bookmarks); // add bookmarks to array of objects
+                    storeBookmarks(bookmarks); // store the bookmarks in localStorage
+                    bookmarkForm.reset();
+            })
+            .catch(error => {
+                alert("There was a problem gettng url info!");
+            });
+
+
+
+
+
+
+            //console.table(bookmarks);
+
+            // savethat bookmarks list to local storage
+            // const title = bookmarkInput.value;
+            // const bookmark = document.createElement('a');
+            // bookmark.className = 'bookmark';
+            // bookmark.innerText = title;
+            // bookmark.href = '#';
+            // bookmark.target = '_blank';
+            // bookmarksList.appendChild(bookmark);
+        }
+
+        function fillBookmarksList(bookmarks = []) {
+            // can replace 'const bookmarksHtml' with 'bookmarksList.innerHTML'
+            const bookmarksHtml = bookmarks.map((bookmark, i) => {
+                return `<a href="${bookmark.link}" class="bookmark" data-id="${i}">
+                    <div class="img" style="background-image:url('${bookmark.image}')"></div>
+                    <div class="title">${bookmark.title}</div>
+                    <span class="glyphicon glyphicon-remove"></span>
+                    </a>`;
+
+            }).join('');
+            bookmarksList.innerHTML = bookmarksHtml;
+
+            // let bookmarksHtml = '';
+            // bookmarks.forEach(item => {
+            //     bookmarksHtml += `<a href="#" class="bookmark">
+            //         ${item.title}
+            //         </a>`;
+            // });
+            //console.log(bookmarksHtml);
+            // bookmarksList.innerHTML = bookmarksHtml;
+        }
+
+        function storeBookmarks(bookmarks = []) {
+            //JSON.stringify creates something like this:  [{"title":"first"},{"title":"second"},{"title":"third"}]
+            localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
+        }
+
+        function removeBookmark(e) {
+            
+            // find the indes
+            //remover it from the bookmards using splice
+            // fill the list
+            // store back to local storage
+
+            // use event-delegation for all clicks
+            if (!e.target.matches('.glyphicon-remove')) return;
+
+            const index = e.target.parentNode.dataset.id;
+            //console.dir(index); // returns list of all properties for index
+            bookmarks.splice(index, 1);
+            fillBookmarksList(bookmarks);
+            storeBookmarks(bookmarks);
+
+        }
+
+
+
+
+        bookmarkForm.addEventListener('submit', createBookmark);
+        bookmarksList.addEventListener('click', removeBookmark);
+
+    </script>
+</body>
+</html>
