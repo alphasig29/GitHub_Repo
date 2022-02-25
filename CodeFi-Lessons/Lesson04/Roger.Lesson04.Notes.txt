@@ -1,0 +1,153 @@
+DOM - Document Object Model
+Event Listener - dispatch event methods to an 'EventTarget' object
+
+remember to use the back-ticks
+
+_______________________________
+DOM
+
+Option 1
+Button uisng onclick element to set Background
+
+OPTION2
+instead of using onclick='' with a JS func
+
+Do this - set in different section - this is the onclick property
+const buttonone = query 'class';
+butonone.onclick = function() {doc.body.style.backbroundcolor = ''};
+	
+OPTION3 - this is the best practice
+Set the event listener
+const button =
+button.AddEventListener('click',changeColor);
+
+----------------------------------
+Price calc
+
+labels for price (for-'price'
+in;ut type = number name = 'price' id = price' value='5' min='0'
+
+Quantity
+label for='quantity' span class = quantity-label
+ inside label -> input type='range' name= qu' id=quantity valie = 1 min = 1 max = 25
+ 
+queryselector("#price");  this is the ID of price
+totalpricedisplay .qselector(".total-price");
+
+Event Listeners
+PriceInput  "input", calTotCost);
+quantityInput "input", calTotCost);
+ 
+ priceinput.value * quantityinput.value;
+ dispay.innerText= ``
+
+
+APP Start
+call calTotcost(); 
+
+-----------------------------------
+Crazy Buttons
+
+button.btn.crazy-button  type='button'
+
+event = "mouseenter" _same as hover
+
+screen coordinates:
+Y	math.randon() * window.innerHeight - crasybutton.clientHeight;
+X	Width
+
+
+-----------------------------------
+STOPWATCH
+
+section timer
+	<p> span data-action='start' class min >: <span data-action='stop' class 'seconds' /span
+	
+	div
+	button start
+	button stop
+	/div	
+	
+	button reset data-action-'reset'
+	
+JS
+.qselector("[data-action='start']");
+.qSelector(.minutes);
+
+Events
+'click'
+
+setInterval() - allows the page to run on an interval
+clearInterval(var);
+% - modulo
+
+const {minutes, seconds} = getFormattedTime();
+
+can ommit the IF word... and it is called a ternary operator
+
+----------------------------------
+
+ACCORDION
+
+all CSS
+
+use the Details and Summary tag
+<details>
+	<summary>what is hml?</summary>
+	<p>lorem</p>
+
+style this in CSS
+
+.Accorsion-container {
+	display:flex;
+	flex-diretion: column;
+	width: clamp(250px, 30%, 200ps);
+	margin: 1em auto;
+}
+
+details {
+	width: 100%
+	text-aligh: left;
+	margin: 1em 0;
+	paddng: 1 em 2em;
+	box-shadow: ;
+}
+
+details[open] {
+	background-color: #;
+}
+
+summary {
+	color: #;
+	font-size: 2rem;
+	cursor: pointer;
+	}
+	
+details p {
+	font-size: 1.5rem;
+	color: #;
+}	
+
+---------------------------
+scrolling progress
+
+<progress
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

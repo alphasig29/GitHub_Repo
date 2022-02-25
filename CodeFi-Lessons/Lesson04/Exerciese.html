@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 04</title>
+    <style>
+        .btn {
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+            margin: 32px 8px;
+            padding: 16px 28px;
+            font-size: 1.5rem;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0px 8px 17px 2px rgba(0, 0, 0, 0.14),
+                0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+            }
+            .clock p {
+                font-size: 2rem;
+                color: #0284c7;
+                letter-spacing: 0;
+                }            
+    </style>
+</head>
+<body>
+</body>
+    <div><h1>Exercise 01</h1>
+    <!-- Exercise 01 create Create a button that changes the background and text color randomly when clicked -->
+    <button class="btn btn-primary" type="button" data-action="randomBackground">Change Background</button>
+    </div>
+
+    <div>
+        <h1>Exercise 03</h1>
+        <section class="container">
+            <h1>Time Clock</h1>
+      
+            <article>
+              <!-- Clock Display -->
+              <section class="clock">
+                <!-- Code Goes Here -->
+                <p>
+                    <span class="hours">0 0</span> : <span class="minutes">0 0</span> : <span class="seconds">0 0</span>
+                </p>    
+                <p>
+                    <span class="hours12">0 0</span> : <span class="minutes">0 0</span> : <span class="seconds">0 0</span> <span class="ampm">AM</span>
+                </p>
+              </div>
+      
+              <!-- Clock Buttons? -->
+              <!-- <section class="timer-buttons">
+                
+              </section> -->
+            </article>
+            <button class="btn btn-primary" data-action="updateClock">Start The Clock</button> 
+            <button class="btn btn-primary" data-action="stopClock">Stop The Clock</button>
+        </section>
+    </div>
+
+    <script src="./js/exercises.js"></script>
+        
+</body>
+</html>
