@@ -1,0 +1,87 @@
+Class 05  02/28/2022 5:30 PM CT
+
+Bookmarking App
+
+Create Floating Inputs
+Utilize local storage
+Fetch data frm an API
+
+API
+Local Storage
+-----------------------------------------------
+label has a for tag of 'link'
+	must have an iinput box with id='link'
+		give a name and placeholder properties/attributes
+
+sr-only -> css screen reader only text, will not display the text on screen
+
+for a '+', use HTML built in's  use &plus instread of + ; works for <, >, etc.
+&times -> x box
+
+
+area-lavel="add new label" -> atribute is for screen readers
+
+CSS
+min-heigt: 100vh;  view height
+width: 100vw; view width
+
+width: clalmp(minpx, percent of container%, max sizepx)
+
+<script src="./app.js"></scrpt>
+
+<a class="link-list" hreg="/"></a> - anchor tag
+
+margin: 0 auto; -> centers text/things
+
+text-decoration: none; -> no underline from the <a>
+
+to stop the refresh the url from refreshing
+(e)
+e.preventDefault();
+
+form.reset();  -> clears the form, returns to default look and values
+
+
+---
+localStorage.setIem(key_string);
+localStorage.getItem(key_sting) || [];
+
+newLink.target = "_blank";  -> opens a link in a new tab,  not the current tab.
+` -> this is a Temporal Literal
+
+array.map() -> like forEach, but returns a value
+arrey.map(link) => `blah`
+
+
+Can research:
+display: flex;
+
+there is a perserve Log featuren in the console settings (gear button)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

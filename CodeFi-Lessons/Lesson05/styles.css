@@ -1,0 +1,79 @@
+/* * GLOBAL STYLES * */
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #0f172a;
+  background-image: url("./images/night-sky_bg.jpg");
+  background-size: cover;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0 0 0.5em 0;
+  padding-top: 1.5em;
+  color: #e0f2fe;
+}
+
+/* * PAGE STYLES * */
+.input-bottom button {
+  /* position: absolute; */
+  right: 0;
+  bottom: 0;
+  padding: 5px 10px 5px;
+  text-align: right;
+}
+
+.input-bottom {
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+  display: flex;
+}
+/* .input-container .btn-holder {
+  justify-content: flex-end;
+  display: flex;
+} */
+.container {
+}
+
+.btn {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  margin: 12px 8px;
+  padding: 10px 20px;
+  font-size: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid #60a5fa;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(275px, 50%, 700px);
+  margin: 0 auto;
+}
+
+input {
+  padding: 0.5em 1.25em;
+  font-size: 1.25rem;
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* * HELPER STYLES * */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+input:focus {
+  outline: 3px solid #e11d48;
+}
