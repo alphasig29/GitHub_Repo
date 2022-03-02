@@ -7,27 +7,36 @@
     <title>Class 05 Exercise - localStorage</title>
     <link rel="stylesheet" href="./styles.css" />
 </head>
-<body>
+<body class="">
     <!-- **GOAL**: Create an application that prints out users information on submission of a form and saves the results to local storage -->
-
+    <h1>Enter User Information</h1>
     <!-- create an overlay to display when adding -->
     <div class="overlay"></div>
-    <div class="input-container">
-        <h1>Enter User Information</h1>
+
+    <div class="input-container content">
+
         <form for="add-user" class="input-form form">
             <div class="input-top">
-                <input type="text" class="form-first-name" placeholder="Enter First Name">
-                <input type=" text" class="form-last-name" placeholder="Enter Last Name">
-                <input type=" text" class="form-email" placeholder="Enter Email">
-                <div class="input-bottom">
-                    <button type="submit" class="btn" id="add-user">Add</button>
-                </div>
-                       </div>
+                <label for="f-name" class="form-label">First Name</label>
+                <input type="text" id="f-name" name="first-name" class="form-first-name" placeholder="Enter First Name..">
+                
+                <label for="l-name" class="form-label">Last Name</label>
+                <input type="text" id="l-name" name="last-name" class="form-last-name" placeholder="Enter Last Name..">
+                
+                <label for="email" class="form-label">Email</label>
+                <input type="text" id="email" name="email" class="form-email" placeholder="Enter Email..">
+            </div>                
+            <div class="input-bottom">
+                <button type="submit" class="btn-submit" id="add-user">Add</button>
+            </div>
 
         </form>
-
     </div>
-    
+         
+    <div >
+        <ul class="user-list content"></ul>
+    </div>
+   
 
 
 

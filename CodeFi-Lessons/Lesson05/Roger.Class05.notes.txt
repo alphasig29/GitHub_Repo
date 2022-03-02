@@ -10,7 +10,7 @@ API
 Local Storage
 -----------------------------------------------
 label has a for tag of 'link'
-	must have an iinput box with id='link'
+	must have an input box with id='link'
 		give a name and placeholder properties/attributes
 
 sr-only -> css screen reader only text, will not display the text on screen
