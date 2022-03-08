@@ -101,7 +101,7 @@ function getBudgets(budgetObjects = []){
     });
     return totalBudget;
 }
-console.group("Exercise #4");
+console.group("Exercise #4 - this could be done with the Reduce method");
 
 console.log("getBudgets(example 1)", getBudgets([
     { name: "John", age: 21, budget: 23000 },
