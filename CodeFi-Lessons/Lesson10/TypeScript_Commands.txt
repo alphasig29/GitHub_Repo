@@ -1,0 +1,13 @@
+Installing TypeScript for a Project:
+
+Run a Terminal in VS Code
+then run:
+npm init-y
+npm install typescript
+
+Compile the TypeScript (.ts) file to JavaScript (.js)
+npx tsc filename.ts
+
+Add a config file to the project - creates tsconfig.json file
+npx tsc --init
+
