@@ -140,12 +140,20 @@ function interviewSpread(...questionTimes){
     // evaluate each rule/criteria, and if any fail, immeditely return  disqualified
     if (questionTimes[[1][0]] > 120) {return "disqualified Exam Time > 120"};
     if (questionTimes[0].length < 8) {return "disqualified Dod NOT Finish"};
-    if (questionTimes[0][0] > 5 || questionTimes[0][1] > 5)  {return "disqualified very easy >5"};
-    if (questionTimes[0][2] > 10 || questionTimes[0][3] > 10) {return "disqualified easy >10"};
-    if (questionTimes[0][4] > 15 || questionTimes[0][5] > 15) {return "disqualified medium >15"};
-    if (questionTimes[0][6] > 20 || questionTimes[0][7] > 20) {return "disqualified hard >20"};
+    if (questionTimes[0][0] > 5 || questionTimes[0][1] > 5)  {return "disqualified very easy > 5"};
+    if (questionTimes[0][2] > 10 || questionTimes[0][3] > 10) {return "disqualified easy > 10"};
+    if (questionTimes[0][4] > 15 || questionTimes[0][5] > 15) {return "disqualified medium > 15"};
+    if (questionTimes[0][6] > 20 || questionTimes[0][7] > 20) {return "disqualified hard > 20"};
     return "qualified";
 
+}
+
+function interviewArrayMethods(arr, total) {
+    const benchmark = [5,5,10,10,15,15,20,20,120];
+    const performance = [...arr,total];
+    const restults = performance.every((time, idx) => time <= benchmark[idx]);
+
+    return restults ? "qualified" : "disqualified";
 }
 
 console.groupCollapsed("Exercise #3a - Interview results - params(array, totalTime)");
@@ -162,6 +170,13 @@ console.log('interviewSpread([2, 3, 8, 6, 5, 12, 10, 18], 64)', interviewSpread(
 console.log('interviewSpread([5, 5, 10, 10, 25, 15, 20, 20], 120)', interviewSpread([5, 5, 10, 10, 25, 15, 20, 20], 120));
 console.log('interviewSpread([5, 5, 10, 10, 15, 15, 20], 120)', interviewSpread([5, 5, 10, 10, 15, 15, 20], 120));
 console.log('interviewSpread([5, 5, 10, 10, 15, 15, 20, 20], 130)', interviewSpread([5, 5, 10, 10, 15, 15, 20, 20], 130));
+console.groupEnd();
 
 
+console.groupCollapsed("Exercise #3c Array Methods - Interview results - param(arr, total)");
+console.log('interviewArrayMethods([5, 5, 10, 10, 15, 15, 20, 20], 120)', interviewArrayMethods([5, 5, 10, 10, 15, 15, 20, 20], 120));
+console.log('interviewArrayMethods([2, 3, 8, 6, 5, 12, 10, 18], 64)', interviewArrayMethods([2, 3, 8, 6, 5, 12, 10, 18], 64));
+console.log('interviewArrayMethods([5, 5, 10, 10, 25, 15, 20, 20], 120)', interviewArrayMethods([5, 5, 10, 10, 25, 15, 20, 20], 120));
+console.log('interviewArrayMethods([5, 5, 10, 10, 15, 15, 20], 120)', interviewArrayMethods([5, 5, 10, 10, 15, 15, 20], 120));
+console.log('interviewArrayMethods([5, 5, 10, 10, 15, 15, 20, 20], 130)', interviewArrayMethods([5, 5, 10, 10, 15, 15, 20, 20], 130));
 console.groupEnd();
