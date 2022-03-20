@@ -1,0 +1,60 @@
+03/20/2022 
+https://pro.academind.com/courses/angular-the-complete-guide/lectures/13865916
+
+Angular - Getting Started
+
+Single Page Approach
+
+New Angular version is pushed out every 6 months.  They are always backwatds compatible since version #2.
+
+Create a new project
+Use the 'cd' command to navitage to the folder. dir/dir/dir
+User 'ng new my-first-app --no-strict' to create the my-first-app folder.
+	'n' for  angular routing
+	'CSS' for style sheet format
+Use 'ng serve' to run the existing code
+	comments show that you can view in browser at 'http://localhost:4200/'
+
+install Bootstrap v.3 - locally in the folder
+npm install --save bootstrap@3
+
+in angular.json:
+
+
+----------------------------------
+
+.html file:
+<input type="text" [(ngModel)]="name">
+<p>{{ name }}</p>
+
+-----------------
+app.modules.ts file:
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule} from '@angular/forms';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+-------------------------------------
+
+
+
+
+
+
+
+
+
+
