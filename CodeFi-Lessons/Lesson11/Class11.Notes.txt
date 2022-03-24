@@ -1,0 +1,75 @@
+Class 11 03/21/2022 - Angular - getting started
+
+fire based database
+
+TERMINAL
+mkdir
+
+
+Command you probalby don't have -> launches in VS Code
+code .
+
+Philosophy of Angular
+each component wil have a .TS, .html, & .css file
+
+
+
+cmd
+npm i bootstrap@4
+
+New Angular Workflow:
+1. launch CMD or PowerShell or GitBash
+2. browse to the folder where you will create the project, using cd 
+3. mkdir the project folder
+4. cd into the project folder
+5. 'ng new my-first-app --no-strict' creates a new angular project
+	'n' for  angular routing
+	'CSS' for style sheet format
+6. cd to the project folder
+7. 'npm i bootstrap@4' install bootstrap
+8. 'code .' to lunch VS Code
+9. delete /src/app/app.component.spec.ts
+10. clear the app.component.html file
+	Add this
+	<div class="container">
+	  <h2>Class 11 - Exercise #1</h2>
+	</div>	
+11. edit /angular.json to insert the bootstrap file 
+	Styles: []  'node_modules/bootstrap/dist/css/bootstrap.min.css'
+12. launch new TERMINAL
+13. 'ng serve' to verify that the site is working
+14. open 'http://localhost:4200/' in browser/chrome
+15. <ctrl>+c -> stop the server
+
+Create a new component 
+	ng generate component name-component
+	This is the shortcut:
+	ng g c name-component
+
+Default component___________
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,7 +5,7 @@ Angular - Getting Started
 
 Single Page Approach
 
-New Angular version is pushed out every 6 months.  They are always backwatds compatible since version #2.
+New Angular version is pushed out every 6 months.  They are always backwards compatible since version #2.
 
 Create a new project
 Use the 'cd' command to navitage to the folder. dir/dir/dir
@@ -17,6 +17,8 @@ Use 'ng serve' to run the existing code
 
 install Bootstrap v.3 - locally in the folder
 npm install --save bootstrap@3
+npm i bootstrap@4
+
 
 in angular.json:
 

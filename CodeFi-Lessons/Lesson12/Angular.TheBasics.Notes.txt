@@ -1,0 +1,225 @@
+Angular - The Basics
+03/22/2022
+
+https://pro.academind.com/courses/angular-the-complete-guide/lectures/13901064
+
+main.ts has all the components that Angular knows about, default is app.module
+
+
+MANUALLY CREATING NEW COMPONENTS ===============================
+
+To create a new nested component,
+	ceate the TS and the HTML files
+	Put this in the TS file
+			import { Component } from "@angular/core";
+			@Component({
+			  selector: 'app-server',
+			  template: './server.component.html'
+			})
+			export class ServerComponent {
+			}
+
+
+Registering the new component_______________
+when adding a new nested component to the app.component, 
+	add the Component name (ServerComponent) to the @NgModules Declarations
+	import the component : import { ServerComponent } from './server/server.component';
+----------------------------------------------
+
+======================================================
+
+
+USE CLI TO CREATE A NEW NESTED COMPONENT
+with the terminal at the Project Folder my-first-app:
+
+ng generate component servers
+This is the shortcut:
+ng g c servers
+
+in the component.ts file, if you use @Component template instead of templateUrl, 
+	you can enter html code like this: (no multi-line support)
+	'<app-server></app-server><app-server></app-server>'
+	you can use `` to use multi-line
+	  template: `
+        <app-server></app-server>
+        <app-server></app-server>`
+
+Rule: you must have a temple or templateURL in a component.
+
+in the component.ts file, you can use @Component styles instead of styleUrls
+	This lets you set the css values directly using a string of CSS styling:
+	  styles: [`
+				h3 {
+				  color: dodgerblue;
+				}
+			  `]
+
+================================================================
+
+COMPONENT SELECTOR in component.ts
+
+can place brackets around the selector and use it as an attribute
+	ex. selector: '[app-servers]'
+	you then need to comment out '<app-servers></app-servers>'
+		and use the component as an attribute
+		<div app-sservers></div> in the parent .html file
+
+can use the following, which will be used as a class (the dot identifies as a class)
+	selector: '.app-servers',
+	then use this in the parent .html file
+	<div class="app-servers"></div>
+		you still get the component data.
+	
+Rule: selecting by ID is not allowed in Angular.
+
+Basically, stick to using:
+	selector: 'app-servers'
+
+==================================================================
+
+ASSIGNMENT
+
+create 2 new components:
+	warning alert
+	success aller 
+
+======================================================================
+Example of a hand-made component.ts
+
+import { style } from "@angular/animations";
+import { Component } from "@angular/core";
+
+@Component ({
+  selector: 'app-warning-alert',
+  templateUrl: './warning-alert.component.html',
+  styles: [`
+      .warning{
+        color: red;
+      }`]
+})
+
+export class WarningAlertComponent {}
+
+========================================================================
+
+UNDERSTANDING DATA BINDING
+
+
+
+String Interpolation:
+	<p>{{ 'Server' }} with ID {{ serverId}} is {{ getServerStatus() }} </p>
+
+Property Binding:
+square brackets -> identify to Angular that we are binding a property 
+	<button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>
+	<p [innerText]="allowNewServer"></p>
+
+Event Binding:
+Use () to signal that we are binding to an event
+	<button class="btn btn-primary" 
+	[disabled]="!allowNewServer"
+	(click)="onCreateServer()">Add Server</button>
+
+
+The $event is the output of the event.
+	<input type="text" class="form-control"
+	(input)="onUpdateServerName($event)">
+
+
+Two Way Binding ngModel
+
+For Two-Way-Binding (covered in this lecture) to work, you need to enable the ngModel directive. 
+This is done by adding the FormsModule to the imports[] array in the AppModule.
+You then also need to add the import from @angular/forms in the app.module.ts file:
+
+	import { FormsModule } from '@angular/forms';
+
+example:
+<input type="text" class="form-control"
+[(ngModel)]="serverName">	
+
+=======================================================================================
+
+DIRECTIVES
+
+Directives - instructions in teh DOM
+	ex. the selector: app-root
+
+Typically use as an attribute. 
+	selector:'[]'
+
+There are Built-In directives. ngIf
+	<p *ngIf="serverCreated">Server was created, server name is {{serverName }}</p>
+	This is a structural directive.  serverCreated is a boolean value in the TS file.
+
+	ngElse
+	# is a local reference : notice noServer after *ngIf and in <ng-template>
+	<p *ngIf="serverCreated; else noServer">Server was created, server name is {{serverName }}</p>
+	<ng-template #noServer>
+	  <p>No server was created!</p>
+	</ng-template>
+
+--------------------------------------
+
+Styling elements dynamically with ngStyle
+
+use property binding by using [], which is not a directive.
+	<p [ngStyle]="{backgroundColor: getColor()}">{{ 'Server' }} with ID {{ serverId}} is {{ getServerStatus() }} </p>
+	ngstyle is property bound and is setting the color.  
+		same: backgroundColor could also be background-color
+
+
+---------------------------------------
+
+CSS Classes Dynamically wiht ngClass
+
+ngClass allows us to add/remove css classes.
+only works as a property, so wrap it in []
+	must pass an object with key value pairs
+		key -> css class
+		value -> whether the css class should be attached
+	
+	In the TS file: @Component
+	  styles: [`
+			  .online {
+				color: white
+			  }`]
+	
+	In the html file: [ngClass]
+	<p [ngStyle]="{backgroundColor: getColor()}"
+	[ngClass]="{online: serverStatus==='online'}">{{ 'Server' }} with ID {{ serverId}} is {{ getServerStatus() }} </p>
+
+-----------------------------------------------------------------
+
+Outputting Lists with ngFor
+
+use with a * since it is a structural directive
+inside the =string, 
+	set a temp variable for inside the loop.  ex.  'let server of servers'
+	<app-server *ngFor="let server of servers"></app-server>
+	
+we will learn how to pass data later..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

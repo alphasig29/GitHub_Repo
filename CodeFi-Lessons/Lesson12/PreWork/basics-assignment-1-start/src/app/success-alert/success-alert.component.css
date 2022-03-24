@@ -1,0 +1,9 @@
+.success {
+  color: green;
+}
+
+span {
+  padding:  20px;
+  background-color: palegreen;
+  border: 1pc solid green;
+}
