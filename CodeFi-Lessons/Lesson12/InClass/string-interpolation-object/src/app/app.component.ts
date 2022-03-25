@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'string-interpolation-exercise';
-  name: string = 'William van Wilder';
+  title = 'string-interpolation-object';
+  heading: string = 'user post';
+  num: number = 1;
+
+  
 }
