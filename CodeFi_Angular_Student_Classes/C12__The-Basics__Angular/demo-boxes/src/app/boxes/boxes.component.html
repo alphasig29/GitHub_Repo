@@ -1,0 +1,12 @@
+<label for="boxName">Box Name</label>
+<input type="text" class="form-control mb-3" [(ngModel)]="boxName">
+
+<button class="btn btn-primary" (click)="onOpenBox()" [disabled]="!canOpenMoreBoxes">Open a New Box</button>
+<p *ngIf="haveOpenedABox">{{ boxText }}</p>
+
+<app-box *ngFor="let box of boxes"></app-box>
+
+
+<!-- <app-box></app-box>
+<app-box></app-box> -->
+

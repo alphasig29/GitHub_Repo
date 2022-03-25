@@ -22,7 +22,8 @@ To create a new nested component,
 
 Registering the new component_______________
 when adding a new nested component to the app.component, 
-	add the Component name (ServerComponent) to the @NgModules Declarations
+
+	add the Component name (ServerComponent) to the @NgModules Declarations -> app.modules.ts
 	import the component : import { ServerComponent } from './server/server.component';
 ----------------------------------------------
 

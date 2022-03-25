@@ -32,7 +32,7 @@ New Angular Workflow:
 10. clear the app.component.html file
 	Add this
 	<div class="container">
-	  <h2>Class 11 - Exercise #1</h2>
+	  <h1>Class 12 - Exercise #1</h1>
 	</div>	
 11. edit /angular.json to insert the bootstrap file 
 	Styles: []  'node_modules/bootstrap/dist/css/bootstrap.min.css'

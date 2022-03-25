@@ -1,0 +1,11 @@
+
+/* https://stackoverflow.com/questions/11931154/how-to-position-three-divs-in-html-horizontally */
+#container {height: 100%; width:100%; font-size: 0;}
+#left, #middle-left, #middle-right, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
+#left {width: 15%; background: lightgrey;}
+#middle-left {width: 45%; background: lightblue;}
+#middle-right {width: 15%; background: white}
+#right {width: 25%; background: lightskyblue}
+
+/* can also try this one: */
+/* https://www.digitalocean.com/community/tutorials/angular-flex-layout */
