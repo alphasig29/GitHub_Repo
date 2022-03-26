@@ -31,9 +31,14 @@ New Angular Workflow:
 9. delete /src/app/app.component.spec.ts
 10. clear the app.component.html file
 	Add this
-	<div class="container">
-	  <h1>Class 12 - Exercise #1</h1>
-	</div>	
+	<div class="container mt-5">
+	  <div class=" row justify-content-center">
+		<div  class="col-xs-12">
+		  <h1>Class 12 - Exercise #7</h1>
+
+		</div>
+	  </div>
+	</div>
 11. edit /angular.json to insert the bootstrap file 
 	Styles: []  'node_modules/bootstrap/dist/css/bootstrap.min.css'
 12. launch new TERMINAL
@@ -46,14 +51,19 @@ Create a new component
 	This is the shortcut:
 	ng g c name-component
 
-Default component___________
+Default component__________________________________________________
+import { Component } from "@angular/core"; 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+export class AppComponent implements OnInit {
 
 
+}
+___________________________________________________________________
 
 
 
