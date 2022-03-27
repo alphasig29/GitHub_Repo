@@ -1,0 +1,40 @@
+03/27/2022
+Angular: Course Project - The Basics
+https://pro.academind.com/courses/angular-the-complete-guide/lectures/13901423
+
+-------------------------------------------------
+Planning out the Angular Application
+
+Features: Shopping List and Recipt Book
+Compontes:
+	App Root - just let it contain all nested components.
+	Header - need navigation between features/components
+	Shopping List - need shoppping-list component and Edit-component
+	Recipe Book - need recipe-list component, recipe-item, recipe-detail components
+Models: (data)
+	ingredients (for shoppping-list) name and amount	
+	recipe (for recipe book)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

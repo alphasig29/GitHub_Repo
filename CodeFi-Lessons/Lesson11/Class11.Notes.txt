@@ -50,6 +50,7 @@ Create a new component
 	ng generate component name-component
 	This is the shortcut:
 	ng g c name-component
+	ng g c recipes/reipe-list
 
 Default component__________________________________________________
 import { Component } from "@angular/core"; 
