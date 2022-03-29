@@ -15,11 +15,53 @@ Models: (data)
 	ingredients (for shoppping-list) name and amount	
 	recipe (for recipe book)
 
+-----------------------------------------------------
 
+Creating a Model for Data
 
+crate a name.model.ts class in the relative-top-level folder
+export the class
+	set public/private structures
+	constructor class
 
+Example:
 
+export class Recipe {
+  public name: string;
+  public description: string;
+  public imagePath: string;
 
+  constructor(name:string, desc:string, imagePath:string){
+    this.name = name;
+    this.description = desc;
+    this.imagePath = imagePath;
+  }
+}
+
+------------------------------------------------------
+
+built-in short version of a model:
+
+export class Ingredient {
+  constructor( public name: string, public amount: number) {}
+}
+
+-- angular handles the set/get features,
+	so you DO NOT have to write it elaborately like this:
+	
+export class Recipe {
+  public name: string;
+  public description: string;
+  public imagePath: string;
+
+  constructor(name:string, description:string, imagePath:string){
+    this.name = name;
+    this.description = desc;
+    this.imagePath = imagePath;
+  }
+}
+
+--------------------------------------------------------------
 
 
 

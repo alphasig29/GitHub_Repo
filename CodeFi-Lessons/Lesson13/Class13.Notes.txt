@@ -1,0 +1,27 @@
+Class 13 Notes
+
+Layout a project using a wire framework tool
+
+every row contains 12 columns
+
+bootstrap is 12 rows, so half a page is 6 
+
+ng g c --skip-tests=true name
+ng g c --skip-tests=true library
+
+
+docmentation for navbar
+	getbootstrap.com 
+
+
+
+https://source.unsplash.com/500x500/?mystery,book
+
+
+    <!-- [style.max-height]="'{{height}}px'"  -->
+
+
+
+
+
+	

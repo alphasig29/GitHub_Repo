@@ -1,0 +1,17 @@
+<div class="row" *ngFor="let book of myBookshelfBooks">
+  <div class="col-md-12">
+    <a href="" class="card">
+      <h3>{{book.title}}</h3>
+      <p>{{book.author}}</p>
+      <img src="{{book.coverImg}}" style="max-width: 50px; max-height: 50px;" alt="">
+    </a>
+
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <button class="btn btn-primary">Add New Book</button>
+  </div>
+</div>
