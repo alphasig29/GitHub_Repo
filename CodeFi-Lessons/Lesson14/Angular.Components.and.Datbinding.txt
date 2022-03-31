@@ -1,0 +1,180 @@
+03/29/2022
+
+Angular: Components & Databinding Deep Dive 		- pro.academind.com/courses/angular-the-complete-guide/lectures/13901530
+Angular: Course Project - Components & Databinding	-	
+
+------------------------------------------------
+Have a data element in the app.component.ts, but need to allow a child component to manipulate that element/data.
+
+CUSTOM COMPONENT PROPERTY BINDING
+
+THIS SECTION IS ABOUT PASSING DATA FROM A PARENT TO A CHILD COMPONENT...
+
+in the .ts file, in the export class area
+
+server-element.ts - want to allow parent components to access this property.
+import { Coponent, OnInit, Input } from '';  <- added Input
+export class ServerElementComonent implements OnInot {
+	// defining a type, name and content, and need to decorate (decorator) the element with the @Input() (a function) 
+	@Input() element: {type: string, name:string, content:string};
+
+	constructor(){}
+
+	ngOnInot(){}
+}
+
+in the parent/app component html file:
+
+		<app-server-element
+		 *ngFor="let serverElement of serverElements"
+		 [element]="serverElement"></app-server-element> <-- brackets are property binding  -->
+
+in the parent/app component ts file:
+		export class AppComponent {
+			serverElements = [{type: 'server', name:  'TestSErver', content: 'Just a test!'}];
+		}
+
+------------------------------------------------------
+can assign an alias to the child component to be used by parent components.
+
+the alias is set to srvElement below
+	@Import('srvElement') element: {type: string, name:string, content:string};
+
+Now, the parent components will need to bind to srvElement, element will not work.
+
+----------------------------------------------------
+
+THIS SECTION IS ABOUT PASSING DATA FROM A CHILD COMPONENT TO A PARENT COMPONENT.
+
+inform the parent component that some data was change (button clicked)
+
+in parent .ts
+	serverElements = [{type: 'server', name:  'TestSErver', content: 'Just a test!'}];
+	
+	onServerAdded(serverData:{serverName: string, serverContent:string}){
+	this.serverElements.push({
+		type: 'server',
+		name: serverData.serverName,
+		content: serverData.serverContent
+		});
+	}
+	
+	onBlueprintAdded(blueprintData:{serverName: string, serverContent:string}){
+		basically the same as above/ type: 'blueprint'
+	}
+
+in parent html:
+
+	div.container
+		<app-cockpit 
+			{serverCreated}="onServerAdded($event)"
+			{bpCreated}="onBluePrintAdded($event)"
+		></app-cockpit>
+
+in the middle-child ts:
+	import { Coponent, OnInit, EventEmitter, Output } from '';   <- notice the EventEmitter, Output
+	export class CockpitComonent implements OnInot {
+		// defining a type, name and content, and need to decorate (decorator) the element with the @Input() (a function) 
+		@Output() serverCreated = new EventEmitter<{serverName:string, serverContent:string}>();  <- creating events to emit data, is a function
+		//notice the alias, now bpCreated has to be used, blueprintCreated will not work to parent components
+		@Output('bpCreated') blueprintCreated = new EventEmitter<{serverName:string, serverContent:string}>(); <- creating events to emit data
+		newServerName='';
+		newServerContent='';
+
+		constructor(){}
+
+		ngOnInot(){}
+		
+		onAddServer(){
+			this.serverCreated.emit(
+			{serverName: this.newServerName, 
+			serverContent: this.newSErverConent});
+		}
+		onAddBlueprint() {
+			this.blueprintCreated.emit(
+			{serverName: this.newServerName, 
+			serverContent: this.newSErverConent});
+		}
+		
+	}
+----------------------------------------------------------------------
+SIBLING COMPONENTS CAN GET COMPLICATED TO COMMUNICATE BETWEEN.. 
+	child push up to parent, parent push down to sibling child
+	there is a better way for this complex communication
+
+	dissusion is later.
+
+------------------------------------------------------------------------
+
+CSS priroity -CAN BE OVERWRITTEN
+	View [Style] Encapsulation - styles defined will only apply to the component where the css file is
+	Angular handles this under the hood.
+
+	Encapsulation can be overwridden.
+	in teh .ts file:
+	@Component({
+		...
+		encapsulation: ViewEncapsulation.None - not using view encapsulation, gets the global styles
+		encapsulation: ViewEncapsulation.Enulated - default
+		encapsulation: ViewEncapsulation.Native - not all browsers suppor it
+		})
+
+----------------------------
+
+LOCAL REFERENCES METHOD instead of two way binding
+
+Another way to pass the data from Input 
+
+	This method can only be used in the HTML file, not in the ts file.
+	
+	orig:  <input type="text" class="form-control" [(ngModel)}="newServerName">
+	new: (local reference)
+		<input 
+			type="text" 
+			class="form-control" 
+			#myServerNameInput			// any name after the #
+			>
+
+	new-then: html
+		<button
+			class=""
+			(click)="onAddServer(myServerNameInput)">Add Server</button>
+			// using the # variable to pass the data on button click.
+
+	new-then:	ts
+		onAddServer(nameInput: HTMLInputElement){  // added a passed element param to the function call; value is what we want
+			...
+			serverName: nameInput.value,
+			serverContent: this.newServerContent });
+		}
+
+----------------------------------------------------------------
+Getting access to the Template and Dom with @ViewChild
+
+@ViewChild('serverContentInput', {static: true}) serverContentInput: ElementRef;
+For projects using Angular 9 or higher (check the package.json file to find out), 
+	you can omit static: false, 
+	you only need to specify static: true if you plan on using the selected element inside of ngOnInit().
+
+// from an input box
+@ViewChild('serverContentInput') serverContentInput: ElementRef;  //#serverContentInput was added to the input box in HTML
+	...
+	serverContent: this.serverContentInput.nativeElement.value
+
+// import ViewChild and ElementRef
+
+
+
+--------------------------------------------------------------------
+
+ANOTHER WAY TO PASS DATA AROUND
+
+there is a directive that allows you to place content between component tags
+	<ng-content></ng-content>
+	//place this in the child component html file, when you have the parent doing things (ngFor) between the tags
+
+---------------------------------------------------------------------
+@ContentChild('contentParagraph', {static: true}) paragraph: ElementRef;
+
+
+

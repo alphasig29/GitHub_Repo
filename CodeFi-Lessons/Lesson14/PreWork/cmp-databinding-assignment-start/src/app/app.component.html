@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class=" row justify-content-center">
+  <div  class="col-xs-12">
+    <h1>Databinding Assignment</h1>
+
+    <div class="row">
+      <app-game-control (gameDataReceived)="onRecieveGameData($event)"></app-game-control>
+    </div>
+    <div class="row">
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <app-even *ngFor="let evenNumber of evenNumberArray " [gameData]="evenNumber"></app-even>
+      </div>
+      <hr>
+      <div class="col-md-6">
+        <app-odd *ngFor="let oddNumber of oddNumberArray" [gameData]="oddNumber"></app-odd>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+</div>
