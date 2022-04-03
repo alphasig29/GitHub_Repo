@@ -1,10 +1,11 @@
 <div class="row" *ngFor="let book of myBookshelfBooks">
   <div class="col-md-12">
-    <a href="" class="card">
+    <app-book [book]="bookEl" (selectedBook)="handleSelectedBook(bookEl)"></app-book>
+    <!-- <a href="" class="card">
       <h3>{{book.title}}</h3>
       <p>{{book.author}}</p>
       <img src="{{book.coverImg}}" style="max-width: 50px; max-height: 50px;" alt="">
-    </a>
+    </a> -->
 
   </div>
 </div>

@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'booky';
+  selectedPage = 'library';
+
+  onChangePage(clickedPage: string){
+    this.selectedPage = clickedPage;
+  }
+
 }

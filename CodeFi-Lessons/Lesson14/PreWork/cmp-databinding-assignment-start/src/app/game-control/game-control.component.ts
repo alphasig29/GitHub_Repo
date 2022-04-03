@@ -16,15 +16,25 @@ export class GameControlComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // onStartGame(){
+  //   if (this.myInterval == undefined) {
+  //     console.log('Starting the game!');
+  //     this.gameIncrement = 0;
+  //     this.myInterval = setInterval(() => {
+  //       this.gameDataGenerated.emit(this.gameIncrement);
+  //       // console.log('Increment: ' + this.gameIncrement);
+  //       this.gameIncrement++;
+  //     },1000);
+  //   }
+  // }
+
   onStartGame(){
     if (this.myInterval == undefined) {
       console.log('Starting the game!');
       this.gameIncrement = 0;
-      this.myInterval = setInterval(() => {
-        this.gameDataGenerated.emit(this.gameIncrement);
-        // console.log('Increment: ' + this.gameIncrement);
-        this.gameIncrement++;
-      },1000);
+      this.myInterval = setInterval(() =>
+        this.generateGameData()
+      ,1000);
     }
   }
 

@@ -1,0 +1,18 @@
+<app-navbar class="navbar navbar-light navbar-expand bg-light"
+ (searchTextGenerated)="searchResult=$event"
+></app-navbar>
+
+<!-- <app-navbar (onSearch)="searchResult=$event"></app-navbar>
+<p>{{searchResult}}</p> -->
+
+<div class="container mt-5">
+  <div class=" row justify-content-center">
+  <div  class="col-xs-12">
+    <h1>Class 14 - Exercise #4</h1>
+
+    <p class="row" *ngIf="searchResult!==undefined">
+      Your Search for&nbsp;
+      <i>{{searchResult + '.'}}</i></p>
+  </div>
+  </div>
+</div>

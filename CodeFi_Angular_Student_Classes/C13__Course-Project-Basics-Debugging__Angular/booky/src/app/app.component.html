@@ -1,13 +1,13 @@
 <div class="container mt-5">
-<app-navbar></app-navbar>
+<app-navbar (selectedPage)="onChangePage($event)"></app-navbar>
   <div class="row">
   <div  class="col-md-10 mx-auto">
-    <app-bookshelf></app-bookshelf>
+    <app-bookshelf *ngIf="selectedPage==='bookshelf'"></app-bookshelf>
 
     <hr>
     <hr>
 
-    <app-library></app-library>
+    <app-library *ngIf="selectedPage==='library'"></app-library>
 
   </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Book } from 'src/app/shared/book/book.model';
 
 @Component({
@@ -7,6 +7,7 @@ import { Book } from 'src/app/shared/book/book.model';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
+  @Output() emittedBook = new EventEmitter();
   myBookshelfBooks: Book[] = [
     new Book("Harry Potter 1", "J. K. Rowlling", "Fantasy", "https://source.unsplash.com/50x50/?mystery,book"),
     new Book("Harry Potter 2", "J. K. Rowlling", "Fantasy", "https://source.unsplash.com/50x50/?mystery,book"),
@@ -18,4 +19,7 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleSelectedBook(book:Book){
+    this.emittedBook.emit(book);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/shared/book/book.model';
 
 @Component({
   selector: 'app-bookshelf',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bookshelf.component.css']
 })
 export class BookshelfComponent implements OnInit {
+  selectedBook:Book;
+
 
   constructor() { }
 
