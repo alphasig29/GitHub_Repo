@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class=" row justify-content-center">
+  <div  class="col-xs-12">
+    <h1>Class 14 - Exercise #5</h1>
+    <hr>
+    <div *ngIf="theSelectedBook!=undefined; else noSelectedBook">
+      <p>You have selected the following book:</p>
+      <p>Title: {{ theSelectedBook.title}}</p>
+      <p>By {{theSelectedBook.author}}</p>
+    </div>
+    <ng-template #noSelectedBook>
+      <div>
+        <p>Select a Book to see it displayed here!</p>
+      </div>
+    </ng-template>
+    <hr>
+    <app-bookshelf
+    (userSelectedABook)="theSelectedBook=$event"></app-bookshelf>
+  </div>
+  </div>
+</div>

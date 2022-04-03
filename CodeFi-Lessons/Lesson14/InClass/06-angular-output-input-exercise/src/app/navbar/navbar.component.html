@@ -1,0 +1,16 @@
+<nav class="row col-md-12">
+
+  <input type="text" id="searchInput"
+    class="form-control col-md-4"
+    [(ngModel)]="mySearch"
+    (keyup.enter)="onSerchTextChanged()">
+    <!-- (keypress)="onSerchTextChanged()"> -->
+
+    <button class="btn btn-primary"
+    style="margin-left: 20px;"
+    (click)="onSerchTextChanged()"
+    [disabled]="mySearch==='' || mySearch==undefined">Search</button>
+
+
+</nav>
+<hr>

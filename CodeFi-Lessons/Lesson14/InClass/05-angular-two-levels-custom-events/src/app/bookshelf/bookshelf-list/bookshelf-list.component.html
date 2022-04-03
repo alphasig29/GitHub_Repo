@@ -1,0 +1,8 @@
+<div class="center-with-box"
+style="cursor: pointer"
+*ngFor="let book of books"
+(click)="onBookClick(book.title, book.author)">
+  <p>Title: {{book.title}}</p>
+  <p>Author: {{book.author}}</p>
+</div>
+
