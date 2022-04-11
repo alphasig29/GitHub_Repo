@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/shared/book/book.model';
+import { LibraryService } from '../library.service';
+import { BookshelfService } from 'src/app/bookshelf/bookshelf.service';
 
 @Component({
   selector: 'app-book-results',
@@ -7,15 +9,17 @@ import { Book } from 'src/app/shared/book/book.model';
   styleUrls: ['./book-results.component.css']
 })
 export class BookResultsComponent implements OnInit {
-  allSearchResults: Book[] = [
-    new Book("The Expanse 1", "unknown", "SciFi", "https://source.unsplash.com/50x50/?scifi,book"),
-    new Book("The Expanse 2", "not Rowling", "SciFi", "https://source.unsplash.com/50x50/?scifi,book"),
-    new Book("The Expanse 3", "fan fiction", "SciFi", "https://source.unsplash.com/50x50/?scifi,book")
-  ];
+  allBooks: Book[] = [];
 
-  constructor() { }
+
+  constructor(private libraryService: LibraryService,
+              private bookshelfService: BookshelfService,) {}
 
   ngOnInit(): void {
+    this.allBooks = this.libraryService.getBooks();
   }
 
+  onSaveBook(book: Book) {
+    return this.bookshelfService.saveBook(book);
+    }
 }
