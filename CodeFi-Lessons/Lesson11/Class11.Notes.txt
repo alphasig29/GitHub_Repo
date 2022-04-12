@@ -34,7 +34,7 @@ New Angular Workflow:
 	<div class="container mt-5">
 	  <div class=" row justify-content-center">
 		<div  class="col-xs-12">
-		  <h1>Class 12 - Exercise #7</h1>
+		  <h1>Class 13 - Exercise #1</h1>
 
 		</div>
 	  </div>
@@ -45,6 +45,10 @@ New Angular Workflow:
 13. 'ng serve' to verify that the site is working
 14. open 'http://localhost:4200/' in browser/chrome
 15. <ctrl>+c -> stop the server
+
+
+ng g c comp-name --skip-tests
+
 
 Create a new component 
 	ng generate component name-component

@@ -9,6 +9,7 @@ import { Book } from './book.model';
 })
 export class BookComponent implements OnInit {
   @Input() book: Book;
+  bookIndex: number;
 
   constructor(private bookshelfService: BookshelfService) { }
 
@@ -16,8 +17,5 @@ export class BookComponent implements OnInit {
   }
 
   onSelectBook(){
-    // Tell App Component that someone clicked on a book!
-    this.bookshelfService.bookSelected.emit(this.book);
-
   }
 }

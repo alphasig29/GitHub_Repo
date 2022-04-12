@@ -37,9 +37,14 @@ private myBooks: Book[] = [
   bookSelected = new EventEmitter<Book>();
   bookListChanged = new EventEmitter<Book[]>();
 
-    // read
+    // read all books
     getBooks() {
       return this.myBooks.slice();
+    }
+
+    // read 1 book
+    getBookshelfBook(index: number){
+      return this.myBooks.slice()[index];
     }
 
     // Create
@@ -47,6 +52,7 @@ private myBooks: Book[] = [
       this.myBooks.push(book);
       this.bookListChanged.emit(this.myBooks.slice())
     }
+
 
     // delete
     removeBook(idx: number) {

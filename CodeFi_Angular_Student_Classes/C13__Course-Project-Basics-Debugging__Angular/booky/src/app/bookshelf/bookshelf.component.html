@@ -1,12 +1,12 @@
 <div class="row justify-content-between">
   <!-- Left side - book list -->
-  <div class="col-md-6">
+  <div class="col-md-9">
     <h1>My Saved Books</h1>
     <app-book-list></app-book-list>
   </div>
 
   <!-- Right Side - Book Details -->
-  <div class="col-md-6">
+  <div class="col-md-3">
     <app-book-details [book]="selectedBook" *ngIf="selectedBook; else infoText"></app-book-details>
     <ng-template #infoText><p>Please select a Book</p></ng-template>
   </div>
