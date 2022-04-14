@@ -9,28 +9,28 @@ export class BookshelfService {
   // Data sources should be IMMUTABLE!
 private myBooks: Book[] = [
   new Book(
-  'Book of Testing',
-  'Will Wilder',
-  'Mystery',
-  'https://source.unsplash.com/50x50/?mystery,book'
+  "Harry Potter and the Philosopher's Stone",
+  'J. K. Rowling',
+  'Fantasy',
+  'https://fivebooks.com/app/uploads/books/BC_1408855895.jpg'
   ),
   new Book(
-  'Testing Title 2',
-  'Nolan Hovis',
-  'Science',
-  'https://source.unsplash.com/50x50/?science,book'
+  "Harry Potter and the Chamber of Secrets",
+  'J. K. Rowling',
+  'Fantasy',
+  'https://fivebooks.com/app/uploads/books/BC_1408855909.jpg'
   ),
   new Book(
-  'Fantasy Test',
-  'German Cruz',
-  'Non-Fiction',
-  'https://source.unsplash.com/50x50/?fantasy,book'
+  "Harry Potter and the Prisoner of Azkaban",
+  'J. K. Rowling',
+  'Fantasy',
+  'https://fivebooks.com/app/uploads/books/BC_1408855917.jpg'
   ),
   new Book(
-  'Fantasy Test',
-  'Lex Pryor',
-  'Math',
-  'https://source.unsplash.com/50x50/?math,book'
+  "Harry Potter and the Goblet of Fire",
+  'J. K. Rowling',
+  'Fantasy',
+  'https://fivebooks.com/app/uploads/books/BC_1408855682.jpg'
   ),
   ];
 

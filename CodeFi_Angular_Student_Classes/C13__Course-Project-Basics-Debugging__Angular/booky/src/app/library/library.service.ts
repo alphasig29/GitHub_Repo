@@ -9,28 +9,28 @@ export class LibraryService {
   bookListChanged = new EventEmitter<Book[]>();
   private allBooks: Book[] = [
     new Book(
-    "API Book 1",
-    "Will Wilder",
-    "Mystery",
-    "https://source.unsplash.com/50x50/?mystery,book"
+    "The Expanse: Leviathan Wakes",
+    "James S. A. Corey",
+    "Sci-Fi",
+    "https://images.secondsale.com/images/dbe5236a0854feb97c6847279e1f3abb.jpg"
     ),
     new Book(
-    "API Book 2",
-    "Nolan Hovis",
-    "Non-Fiction",
-    "https://source.unsplash.com/50x50/?serious,book"
+    "The Expanse: Caliban's War",
+    "James S. A. Corey",
+    "Sci-Fi",
+    "https://images.secondsale.com/images/1b2e7c3e8a41699b28f40ee16ea2b697.jpg"
     ),
     new Book(
-    "API Book 3",
-    "German Cruz",
-    "Mystery",
-    "https://source.unsplash.com/50x50/?mystery,book"
+    "The Expanse: Abaddon's Gate",
+    "James S. A. Corey",
+    "Sci-Fi",
+    "https://images.secondsale.com/images/1835dc1221bf0b300e6036727ab612ff.jpg"
     ),
     new Book(
-    "API Book 4",
-    "Lex Pryor",
-    "Non-Fiction",
-    "https://source.unsplash.com/50x50/?serious,book"
+    "The Expanse: Cibola Burn",
+    "James S. A. Corey",
+    "Sci-Fi",
+    "https://images.secondsale.com/images/9546e33b4fd7d78f04afb76aeeb6287d.jpg"
     ),
     ];
   getBooks() {

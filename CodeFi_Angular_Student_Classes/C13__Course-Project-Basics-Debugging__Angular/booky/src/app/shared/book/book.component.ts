@@ -9,13 +9,14 @@ import { Book } from './book.model';
 })
 export class BookComponent implements OnInit {
   @Input() book: Book;
-  bookIndex: number;
+  @Input() idx: number;
+  // bookIndex: number;
 
   constructor(private bookshelfService: BookshelfService) { }
 
   ngOnInit(): void {
   }
 
-  onSelectBook(){
-  }
+  // onSelectBook(){
+  // }
 }

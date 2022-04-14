@@ -7,8 +7,9 @@
 
   <!-- Right Side - Book Details -->
   <div class="col-md-3">
-    <app-book-details [book]="selectedBook" *ngIf="selectedBook; else infoText"></app-book-details>
-    <ng-template #infoText><p>Please select a Book</p></ng-template>
+    <!-- <app-book-details [book]="selectedBook" *ngIf="selectedBook; else infoText"></app-book-details>
+    <ng-template #infoText><p>Please select a Book</p></ng-template> -->
+    <router-outlet></router-outlet>
   </div>
 
 </div>

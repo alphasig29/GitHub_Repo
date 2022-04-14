@@ -1,34 +1,42 @@
 <!-- TITLE -->
 <div class="row">
   <div class="col-md-12">
-    <h2>Book Title</h2>
+    <h2>{{book.title}}</h2>
   </div>
 </div>
 
 <!-- Author -->
 <div class="row">
   <div class="col-md-12">
-    <h2>Author</h2>
+    <h2>{{ book.author}}</h2>
   </div>
 </div>
 
 <!-- Genre -->
 <div class="row">
   <div class="col-md-12">
-    <p>Genre</p>
+    <p>{{ book.genre}}</p>
   </div>
 </div>
 
 <!-- Cover Image -->
 <div class="row">
   <div class="col-md-12">
-    <img src="" alt="tsk">
+    <img src="{{book.coverImg}}" alt="tsk">
   </div>
 </div>
 
+<hr>
 <!-- Edit Button-->
 <div class="row">
   <div class="col-md-12">
-    <button class="btn btn-primary">Edit Book</button>
+    <button class="btn btn-primary" (click)="onEditBook()">Edit Book</button>
+  </div>
+</div>
+
+<!-- Delete Button-->
+<div class="row" style="margin-top: 5px;">
+  <div class="col-md-12">
+    <button class="btn btn-danger" (click)="onRemoveBook()">Delete Book</button>
   </div>
 </div>
