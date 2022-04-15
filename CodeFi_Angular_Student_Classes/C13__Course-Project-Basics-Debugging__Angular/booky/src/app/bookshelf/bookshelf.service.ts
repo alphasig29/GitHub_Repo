@@ -1,4 +1,5 @@
-import { Injectable, EventEmitter } from "@angular/core";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { Book } from "../shared/book/book.model";
 
 @Injectable({
@@ -34,8 +35,8 @@ private myBooks: Book[] = [
   ),
   ];
 
-  bookSelected = new EventEmitter<Book>();
-  bookListChanged = new EventEmitter<Book[]>();
+  bookSelected = new Subject<Book>();
+  bookListChanged = new Subject<Book[]>();
 
     // read all books
     getBooks() {
@@ -50,7 +51,7 @@ private myBooks: Book[] = [
     // Create
     saveBook(book: Book) {
       this.myBooks.push(book);
-      this.bookListChanged.emit(this.myBooks.slice())
+      this.bookListChanged.next(this.myBooks.slice())
     }
 
 
@@ -59,7 +60,7 @@ private myBooks: Book[] = [
       if (idx !== -1) {
         // We have a book at that index
         this.myBooks.splice(idx, 1);
-        this.bookListChanged.emit(this.myBooks.slice());
+        this.bookListChanged.next(this.myBooks.slice());
       }
     }
 }

@@ -20,6 +20,9 @@ export class BookResultsComponent implements OnInit {
   }
 
   onSaveBook(book: Book) {
-    return this.bookshelfService.saveBook(book);
+    // ad the book eo the BookshelfService allBookShelfBooks array
+    this.bookshelfService.saveBook(book);
+    // save the book to the global bookSelected Subject
+    this.bookshelfService.bookSelected.next(book);
     }
 }

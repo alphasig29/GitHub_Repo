@@ -1,0 +1,15 @@
+li {
+  background-color: transparent
+}
+
+.card {
+  border-radius: 5%;
+  border-color: white;
+  border-width: 4px;
+
+  width: 13rem;
+  height: 19rem;
+  margin-bottom: 1rem;
+
+
+}

@@ -18,17 +18,17 @@ export class SectorDataService{
     new StockQuote('Materials', 'XLB', 88.04, 0.00, 0.00, 87.93, 88.98, 88.48, 88.19),
     new StockQuote('Real Estate', 'XLRE', 48.97, -0.02, -0.04, 48.85, 49.79, 49.67, 19.56),
     new StockQuote('Techonogy', 'XLK', 148.40, -0.17, -0.11, 148.37, 150.69, 152.41, 150.50),
-    new StockQuote('Comm Services', 'XLC', 67.00, -0.20, -0.30, 67.11, 68.26, 68.08, 67.63),
+    new StockQuote('Comm Srvc', 'XLC', 67.00, -0.20, -0.30, 67.11, 68.26, 68.08, 67.63),
     new StockQuote('Utilities', 'XLU', 76.00, 0.09, 0.12, 75.79, 77.11, 76.96, 77.01)
   ];
 
-  private sp500Data: StockQuote = 
+  private sp500Data: StockQuote =
     new StockQuote('S&P 500', 'SPY', 439.67, -0.25, -0.06, 439.39, 445.00, 447.57, 44.11);
 
   getSectorData() {
     return this.sectorData.slice();
   }
 
-  
+
 
 }
