@@ -14,7 +14,7 @@ export class SectorDataService{
     new StockQuote('Energy', 'XLE', 77.29, 0.15, 0.19, 76.96, 78.70, 79.53, 78.68),
     new StockQuote('Financials', 'XLF', 37.77, 0.05, 0.13, 37.66, 38.15, 37.89, 37.79),
     new StockQuote('Health Care', 'XLV', 139.64, -0.35, -0.25, 139.78, 143.00, 142.83, 142.42),
-    new StockQuote('Industirals', 'XLI', 99.75, 1.47, 0.47, 99.10, 100.40, 99.60, 99.28),
+    new StockQuote('Industrials', 'XLI', 99.75, 1.47, 0.47, 99.10, 100.40, 99.60, 99.28),
     new StockQuote('Materials', 'XLB', 88.04, 0.00, 0.00, 87.93, 88.98, 88.48, 88.19),
     new StockQuote('Real Estate', 'XLRE', 48.97, -0.02, -0.04, 48.85, 49.79, 49.67, 19.56),
     new StockQuote('Techonogy', 'XLK', 148.40, -0.17, -0.11, 148.37, 150.69, 152.41, 150.50),
@@ -26,9 +26,24 @@ export class SectorDataService{
     new StockQuote('S&P 500', 'SPY', 439.67, -0.25, -0.06, 439.39, 445.00, 447.57, 44.11);
 
   getSectorData() {
+    // sort the array by % change
+    this.sectorData = this.sortArray(this.sectorData);
+    // return a copy of the data to prevent external updates
     return this.sectorData.slice();
   }
 
+  private sortArray(stockData: StockQuote[]): StockQuote[] {
+    //sort the sector array by the % change
+    let sortedArray: StockQuote[] = stockData.sort(
+        (a, b) => (a.curPercentChange < b.curPercentChange ? 1 : -1)
+      );
+      // return the passed array to be the ordered array
+      return sortedArray;
 
+    }
 
+    refreshSectorData(){
+      // call API (iexcloud) to get the stock info for each Sector and SP500
+      
+    }
 }

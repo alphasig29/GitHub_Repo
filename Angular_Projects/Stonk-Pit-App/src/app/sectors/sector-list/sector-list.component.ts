@@ -16,4 +16,8 @@ export class SectorListComponent implements OnInit {
     this.allSectors = this.sectorQuotes.getSectorData();
   }
 
+  onRefreshData(){
+    this.sectorQuotes.refreshSectorData();
+  }
+
 }

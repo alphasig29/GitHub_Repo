@@ -7,9 +7,14 @@ li {
   border-color: white;
   border-width: 4px;
 
-  width: 13rem;
-  height: 19rem;
+  width: 12rem;
+  height: 16rem;
   margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 0rem;
 
+}
 
+.tab {
+  padding-left: 14px;
 }
