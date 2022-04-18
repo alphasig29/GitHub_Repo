@@ -8,6 +8,7 @@
 # dependencies
 /node_modules
 /.angular
+/src/karma.config.js
 
 # IDEs and editors
 /.idea
