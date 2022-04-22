@@ -1,0 +1,41 @@
+<form>
+  <div class="book-data" [formGroup]="reactiveBookForm" (ngSubmit)="onFormSubmit()">
+    <div class="form-group">
+      <label for="title">Tiltle</label>
+      <input type="text" name="title" id="title" class="form-control" formControlName='title' >
+      <span class="help-block text-danger"
+      *ngIf="reactiveBookForm.get('title').touched
+      && !reactiveBookForm.get('title').valid ">Please enter a title!</span>
+    </div>
+
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author" class="form-control" formControlName='author' >
+      <span class="help-block text-danger" *ngIf="reactiveBookForm.get('author').touched
+      && !reactiveBookForm.get('author').valid ">Please enter an author!</span>
+    </div>
+
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <select name="genre" id="genre" formControlName="genre">
+        <option value="mystery">Mystery</option>
+        <option value="programming">Programming</option>
+        <option value="mystery">Mystery</option>
+        <option value="scifi">SciFi</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" [disabled]="!reactiveBookForm.valid">Submit</button>
+  </div>
+</form>
+
+<!-- Form Results -->
+<div class="row mt-f" *ngIf="!formHasBeenSubmitted">
+  <div class="col-xs-12">
+    <h3>Title: {{ reactiveBookForm.value.title }} </h3>
+    <h4>Author: {{ reactiveBookForm.value.author }}</h4>
+    <p>Genre: {{ reactiveBookForm.value.genre }}</p>
+  </div>
+</div>
+
+

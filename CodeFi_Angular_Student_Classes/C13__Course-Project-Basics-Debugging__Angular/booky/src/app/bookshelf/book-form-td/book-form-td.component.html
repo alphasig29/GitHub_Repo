@@ -1,0 +1,31 @@
+<form (ngSubmit)="onFormSubmit(f)" #f>
+  <div class="book-data">
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Tiltle</label>
+      <input type="text" name="title" id="title" class="form-control" ngModel #titleRef="ngModel">
+      <span class="help-block text-danger" *ngIf="titleRef.touched && !titleRef.valid">Please enter a valid title!</span>
+    </div>
+
+    <!-- Author -->
+    <!-- Title -->
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author" class="form-control" ngModel #authorRef="ngModel">
+      <span class="help-block text-danger" *ngIf="authorRef.touched && !authorRef.valid">Please enter a valid author!</span>
+    </div>
+    <!-- Genre -->
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <select id="genre" name="genre" class="=form-control" [ngModel="'mystery'"]>
+        <option value="mystery">Mystery</option>
+        <option value="programming">Programming</option>
+        <option value="mystery">Mystery</option>
+        <option value="scifi">SciFi</option>
+      </select>
+
+    </div>
+    <!-- Submit -->
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+  </div>
+</form>

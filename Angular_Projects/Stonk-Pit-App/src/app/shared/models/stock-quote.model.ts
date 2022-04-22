@@ -8,10 +8,7 @@ export class StockQuote {
   public dayHigh: number;
   public previousClose: number;
   public openPrice: number;
-  
-  
-  
-  
+
   constructor(
     name: string,
     symbol: string,

@@ -1,5 +1,10 @@
 import { Injectable } from "@angular/core";
 import { StockQuote } from "../shared/models/stock-quote.model";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { catchError, throwError, map, Observable, Subject } from "rxjs";
+import { Constants } from "../config/constants";
+import { APIAllSEctorStockQuote} from "../shared/models/api-stock-quote.model"
+
 
 
 @Injectable({
@@ -7,6 +12,9 @@ import { StockQuote } from "../shared/models/stock-quote.model";
 })
 
 export class SectorDataService{
+  // provide a Subject to subscribe to
+  sectorDataChanged = new Subject<StockQuote[]>();
+  private refressedSectorData: APIAllSEctorStockQuote[];
 
   private sectorData: StockQuote[] = [
     new StockQuote('Cons Disc', 'XLY', 175.70, -0.45, -0.26, 175.96, 179.78, 179.48, 176.78),
@@ -21,15 +29,19 @@ export class SectorDataService{
     new StockQuote('Comm Srvc', 'XLC', 67.00, -0.20, -0.30, 67.11, 68.26, 68.08, 67.63),
     new StockQuote('Utilities', 'XLU', 76.00, 0.09, 0.12, 75.79, 77.11, 76.96, 77.01)
   ];
-
+  // this is for future use..
   private sp500Data: StockQuote =
     new StockQuote('S&P 500', 'SPY', 439.67, -0.25, -0.06, 439.39, 445.00, 447.57, 44.11);
 
-  getSectorData() {
+  constructor(private http: HttpClient,
+              private config: Constants){}
+
+  getSectorData(): StockQuote[] {
     // sort the array by % change
     this.sectorData = this.sortArray(this.sectorData);
     // return a copy of the data to prevent external updates
     return this.sectorData.slice();
+    this.sectorDataChanged.next(this.sectorData.slice());
   }
 
   private sortArray(stockData: StockQuote[]): StockQuote[] {
@@ -43,7 +55,58 @@ export class SectorDataService{
     }
 
     refreshSectorData(){
-      // call API (iexcloud) to get the stock info for each Sector and SP500
-      
+      // build URL to call the API
+      const apiUrl = this.config.API_MOCK_ENDPOINT +
+          this.config.API_OPTION +
+          this.config.API_KEY_TEST;
+      // call API
+      this.callJsonGetRestApi(apiUrl).subscribe((data: any)=>{
+        this.refressedSectorData = data;
+
+        // console.log(data);
+        this.loadSectorArrayWithNewData(this.sectorData,this.refressedSectorData);
+        // sort the array by % change
+        this.sectorData = this.sortArray(this.sectorData);
+        // return a copy of the data to prevent external updates
+        this.sectorDataChanged.next(this.sectorData.slice());
+
+      });
+
+    }
+
+    private loadSectorArrayWithNewData(sourceArray: StockQuote[],
+      newDataArray: APIAllSEctorStockQuote[]){
+      // loop through the newDataArray
+      Object.keys(newDataArray).forEach((key) => {
+        //locate the object[key=symbol] in the source Array
+        let sectorObject: StockQuote = sourceArray.find( obj => {
+          return obj.symbol === key;
+        })
+        //update that object
+        sectorObject.curPercentChange = (newDataArray[key].quote.changePercent * 100);
+        sectorObject.curPrice = newDataArray[key].quote.iexRealtimePrice;
+        sectorObject.curPriceChange = newDataArray[key].quote.change;
+        sectorObject.dayHigh = newDataArray[key].quote.high;
+        sectorObject.dayLow = newDataArray[key].quote.low;
+        sectorObject.openPrice = newDataArray[key].quote.open;
+        sectorObject.previousClose = newDataArray[key].quote.close;
+
+      });
+
+    }
+
+    private callJsonGetRestApi(url):Observable<any> {
+      return this.http.get<APIAllSEctorStockQuote[]>(url)
+        .pipe(map((data: any) => {
+        //handle api 200 response code here or you wanted to manipulate to response
+          return data;
+        }),
+          catchError((error) => {    // handle error
+            if (error.status == 404) {
+              //Handle Response code here
+            }
+            return throwError(() => new Error('errorReceivingJSON'));
+          })
+        );
     }
 }

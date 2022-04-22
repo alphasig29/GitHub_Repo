@@ -4,8 +4,8 @@
         'bg-danger': stockQuote.curPercentChange < 0}">
       <div class="card-body">
         <h4 class="card-title">{{stockQuote.name}}</h4>
-        
-        <h5 class="card-subtitle mb-2">{{stockQuote.curPercentChange!==0 ? stockQuote.curPercentChange + ' %' : 'UNCH'}}</h5>
+
+        <h5 class="card-subtitle mb-2">{{stockQuote.curPercentChange!==0 ? stockQuote.curPercentChange.toFixed(2) + ' %' : 'UNCH'}}</h5>
         <div class="list-group list-group flush">
           <p class="card-tex tab">Symbol: {{stockQuote.symbol}}</p>
           <p class="card-text tab">Open: {{stockQuote.openPrice}}</p>

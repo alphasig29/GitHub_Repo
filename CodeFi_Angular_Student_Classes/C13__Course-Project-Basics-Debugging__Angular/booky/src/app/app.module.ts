@@ -16,6 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { BookshelfHomeComponent } from './bookshelf-home/bookshelf-home.component';
 import { BookshelfEditorComponent } from './bookshelf/bookshelf-editor/bookshelf-editor.component';
 import { NotificationComponent } from './shared/notification/notification.component';
+import { BookFormTdComponent } from './bookshelf/book-form-td/book-form-td.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-form-reactive.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +34,15 @@ import { NotificationComponent } from './shared/notification/notification.compon
     DropdownDirective,
     BookshelfHomeComponent,
     BookshelfEditorComponent,
-    NotificationComponent
+    NotificationComponent,
+    BookFormTdComponent,
+    BookFormReactiveComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [BookshelfService],
   bootstrap: [AppComponent]
