@@ -32,7 +32,7 @@ export class SectorListComponent implements OnInit, OnDestroy {
         this.sectorQuoteService.refreshSectorData();
         // log when data is refreshed so we can check for memory leaks
         let date: Date = new Date;
-        console.log(date + 'refressing the sector data');
+        console.log(date + ' - refressing the sector data');
       })
     ).subscribe();
 

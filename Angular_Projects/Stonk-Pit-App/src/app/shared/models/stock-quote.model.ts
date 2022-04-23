@@ -8,6 +8,9 @@ export class StockQuote {
   public dayHigh: number;
   public previousClose: number;
   public openPrice: number;
+  public week52High: number;
+  public week52Low: number;
+  public ytdChange: number;
 
   constructor(
     name: string,
@@ -18,7 +21,10 @@ export class StockQuote {
     dayLow: number,
     dayHigh: number,
     previousClose: number,
-    openPrice: number
+    openPrice: number,
+    week52High: number,
+    week52Low: number,
+    ytdChange: number
   ) {
     this.name = name;
     this.symbol = symbol;
@@ -29,5 +35,8 @@ export class StockQuote {
     this.dayHigh = dayHigh;
     this.previousClose = previousClose;
     this.openPrice = openPrice;
+    this.week52High = week52High;
+    this.week52Low = week52Low;
+    this.ytdChange = ytdChange;
   }
 }

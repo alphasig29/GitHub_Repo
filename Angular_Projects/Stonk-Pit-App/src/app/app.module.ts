@@ -10,6 +10,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { StockCardComponent } from './shared/stock-card/stock-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Constants } from './config/constants';
+import { LoginComponent } from './home-page/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RandomQuoteComponent } from './shared/random-quote/random-quote.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,16 @@ import { Constants } from './config/constants';
     StockListComponent,
     HomePageComponent,
     FooterComponent,
-    StockCardComponent
+    StockCardComponent,
+    LoginComponent,
+    RandomQuoteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
