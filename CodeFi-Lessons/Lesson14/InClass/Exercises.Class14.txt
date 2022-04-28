@@ -91,3 +91,19 @@
 3. Nest both navbar and search-page in the app component
 4. In `navbar.component.html`, create an input element and button.
 5. When the user enters a search, he/she should be able to click a button to see the search displayed, `You searched for ...`. Allow the search-page component to render this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

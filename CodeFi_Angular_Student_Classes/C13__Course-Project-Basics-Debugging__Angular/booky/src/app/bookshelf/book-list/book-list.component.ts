@@ -12,6 +12,7 @@ import { BookshelfService } from '../bookshelf.service';
 export class BookListComponent implements OnInit {
   @Input() book: Book;
   myBooks: Book[] = [];
+  sortField: string = 'author';
 
   constructor(private bookshelfService: BookshelfService,
               private router: Router,
@@ -33,5 +34,12 @@ export class BookListComponent implements OnInit {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 
+  onSortBooks(){
+    if(this.sortField ==='author') {
+      this.sortField = 'title';
+    } else {
+      this.sortField = 'author';
+    }
+  }
 
   }

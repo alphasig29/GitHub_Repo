@@ -45,7 +45,7 @@ in the component.ts file, if you use @Component template instead of templateUrl,
         <app-server></app-server>
         <app-server></app-server>`
 
-Rule: you must have a temple or templateURL in a component.
+Rule: you must have a template or templateURL in a component.
 
 in the component.ts file, you can use @Component styles instead of styleUrls
 	This lets you set the css values directly using a string of CSS styling:
@@ -190,6 +190,7 @@ only works as a property, so wrap it in []
 	<p [ngStyle]="{backgroundColor: getColor()}"
 	[ngClass]="{online: serverStatus==='online'}">{{ 'Server' }} with ID {{ serverId}} is {{ getServerStatus() }} </p>
 
+	<input type="text" class="form-control mb-3" [(ngModel)]="boxName">
 -----------------------------------------------------------------
 
 Outputting Lists with ngFor

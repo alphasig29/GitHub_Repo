@@ -1,1 +1,41 @@
-<app-book-form-td></app-book-form-td>
+<form #bookFormRef="ngForm" (ngSubmit)="onBookFormSubmit(bookFormRef)">
+  <!-- title input -->
+<div class="form-group">
+  <label for="title">Title</label>
+  <input type="text" #titleRef name="title" id="title" class="form-control" [ngModel]="bookDetails.title" required>
+  <span class="help-blick text-danger" *ngIf="titleRef.touched && !titleRef.valid">Please enter a valid Title</span>
+</div>
+  <!-- author input -->
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input type="text" #authorRef name="author" id="author" class="form-control" [ngModel]="bookDetails.author" required>
+    <span class="help-blick text-danger" *ngIf="authorRef.touched && !authorRef.valid">Please enter a valid Author</span>
+  </div>
+  <!-- genre - select -->
+  <div class="form-group">
+    <label for="genre">Genere</label>
+    <select type="select" #genreRef name="genre" id="genre" class="form-control" [ngModel]="bookDetails.genre" required></select>
+    <option disabled selected value>Please select a genre</option>
+    <option value="mystery">Mystery</option>
+    <option value="sci-fi">Sci-Fi</option>
+    <option value="romance">Romance</option>
+    <option value="programming">Programming</option>
+    <span class="help-blick text-danger" *ngIf="genreRef.touched && !genreRef.valid">Please enter a Genre</span>
+  </div>
+  <!-- image -input -->
+  <div class="form-group">
+    <label for="coverImg">Image URL</label>
+    <input type="text" name="coverImg" id="coverImg" class="form-control" [ngModel]="bookDetails.coverImg">
+  </div>
+  <!-- image - display -->
+  <div class="row my-2" *ngIf="bookFormRef.value.coverImg">
+    <div class="col-xs-10 mx-auto">
+      <img src="bookFormRef.value.coverImg" class="img-responsive" alt="{{bookFormRef.value.title}} cover">
+    </div>
+  </div>
+  <!-- submit button -->
+  <button class="btn btn-primary mr-3" type="submit" [disabled]="!bookFormRef.valid">Save Book</button>
+  <!-- candel button -->
+  <button class="btn btn-secondary" type="button" (click)="onResetForm()">Cancel</button>
+
+</form>

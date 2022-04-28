@@ -13,7 +13,7 @@ const appRoutes: Routes = [
     {path:'', component: BookshelfHomeComponent},
     {path:':id', component: BookDetailsComponent},
     {path:'new', component: BookshelfEditorComponent},
-    //{path:'new', component: BookshelfEditorComponent}, // BookDetailsComponent //BookFormTdComponent
+    {path:'edit', component: BookFormTdComponent}, // BookDetailsComponent //BookFormTdComponent
 
     ]},
   {path: "library", component: LibraryComponent}

@@ -19,6 +19,7 @@ import { NotificationComponent } from './shared/notification/notification.compon
 import { BookFormTdComponent } from './bookshelf/book-form-td/book-form-td.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-form-reactive.component';
+import { SortBooksPipe } from './shared/pipes/bookSort.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-f
     BookshelfEditorComponent,
     NotificationComponent,
     BookFormTdComponent,
-    BookFormReactiveComponent
+    BookFormReactiveComponent,
+    SortBooksPipe
   ],
   imports: [
     BrowserModule,
