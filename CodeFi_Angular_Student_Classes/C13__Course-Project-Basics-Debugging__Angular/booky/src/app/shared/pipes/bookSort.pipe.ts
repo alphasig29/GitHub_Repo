@@ -17,11 +17,8 @@ transform(bookArr: Book[], sortBy: string) {
     } else {
       return 0;
     }
-
-
-
   });
-
+  return bookArr;
 }
 
 

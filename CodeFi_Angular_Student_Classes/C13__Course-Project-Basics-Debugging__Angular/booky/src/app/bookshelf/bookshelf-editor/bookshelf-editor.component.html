@@ -13,13 +13,16 @@
   </div>
   <!-- genre - select -->
   <div class="form-group">
-    <label for="genre">Genere</label>
-    <select type="select" #genreRef name="genre" id="genre" class="form-control" [ngModel]="bookDetails.genre" required></select>
-    <option disabled selected value>Please select a genre</option>
-    <option value="mystery">Mystery</option>
-    <option value="sci-fi">Sci-Fi</option>
-    <option value="romance">Romance</option>
-    <option value="programming">Programming</option>
+    <label for="genre">Genre</label>
+    <select #genreRef="ngModel" name="genre" id="genre" class="form-control"
+      [ngModel]="bookDetails.genre" required>
+      <option disabled selected value>Please select a genre</option>
+      <option value="Mystery">Mystery</option>
+      <option value="Sci-Ri">Sci-Fi</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Programming">Programming</option>
+      <option value="Romance">Romance</option>
+    </select>
     <span class="help-blick text-danger" *ngIf="genreRef.touched && !genreRef.valid">Please enter a Genre</span>
   </div>
   <!-- image -input -->
@@ -30,7 +33,7 @@
   <!-- image - display -->
   <div class="row my-2" *ngIf="bookFormRef.value.coverImg">
     <div class="col-xs-10 mx-auto">
-      <img src="bookFormRef.value.coverImg" class="img-responsive" alt="{{bookFormRef.value.title}} cover">
+      <img [src]="bookFormRef.value['coverImg']" class="img-responsive" [alt]="bookFormRef.value['title'] + ' cover'">
     </div>
   </div>
   <!-- submit button -->

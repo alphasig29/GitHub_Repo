@@ -11,9 +11,9 @@ const appRoutes: Routes = [
   {path: "", redirectTo: "/bookshelf", pathMatch: "full"},
   {path: "bookshelf", component: BookshelfComponent, children: [
     {path:'', component: BookshelfHomeComponent},
-    {path:':id', component: BookDetailsComponent},
     {path:'new', component: BookshelfEditorComponent},
-    {path:'edit', component: BookFormTdComponent}, // BookDetailsComponent //BookFormTdComponent
+    {path:':id', component: BookDetailsComponent},
+    {path:':id/edit', component: BookshelfEditorComponent}, // BookDetailsComponent //BookFormTdComponent
 
     ]},
   {path: "library", component: LibraryComponent}

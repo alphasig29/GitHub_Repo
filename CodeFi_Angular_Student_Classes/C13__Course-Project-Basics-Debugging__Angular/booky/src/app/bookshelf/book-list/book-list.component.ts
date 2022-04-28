@@ -10,7 +10,7 @@ import { BookshelfService } from '../bookshelf.service';
 })
 
 export class BookListComponent implements OnInit {
-  @Input() book: Book;
+  // @Input() book: Book;
   myBooks: Book[] = [];
   sortField: string = 'author';
 
@@ -21,6 +21,7 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     // Use the Service to set local "myBooks" array to Service/Global  "myBooks" array
       this.myBooks = this.bookshelfService.getBooks();
+
     // Listen for changes on the global "myBooks" array and update the  local version
     this.bookshelfService.bookListChanged.subscribe((books: Book[]) => {
     this.myBooks = books;

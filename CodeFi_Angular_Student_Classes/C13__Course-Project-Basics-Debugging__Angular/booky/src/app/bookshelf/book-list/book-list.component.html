@@ -1,5 +1,6 @@
-<div class="row mb-3">
-  <div class="col-md-9" *ngFor="let book of myBooks | sortBooks: sortField, let i = index">
+<div class="row mb-3"
+  *ngFor="let book of myBooks | sortBooks: sortField, let i = index">
+  <div class="col-md-12">
     <app-book [book]="book" [idx]="i"></app-book>
     <button class="float-right"
     style="border:none; font-size: 16px"
@@ -12,6 +13,6 @@
 <div class="row">
   <div class="col-md-12">
     <button class="btn btn-primary" (click)="onNewBook()">Add New Book</button>
-    <button class="btn btn-secondary" (click)="onSortBooks()">Sort by {{ (sortField ==='autorh')? 'title' : 'author'}}</button>
+    <button class="btn btn-secondary" (click)="onSortBooks()">Sort by {{ (sortField ==='author')? 'title' : 'author'}}</button>
   </div>
 </div>
