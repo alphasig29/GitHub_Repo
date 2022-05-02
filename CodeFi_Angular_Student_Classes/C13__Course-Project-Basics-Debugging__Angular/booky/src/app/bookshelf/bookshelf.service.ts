@@ -57,7 +57,12 @@ private myBooks: Book[] = [
     //update
     updateBookshelfBook(index: number, book: Book){
       this.myBooks[index] = book;
-      this.bookListChanged.next(this.myBooks.slice())
+      this.bookListChanged.next(this.myBooks.slice());
+    }
+
+    setBookshelfBooks(bookArr: Book[]) {
+      this.myBooks = bookArr;
+      this.bookListChanged.next(this.myBooks.slice());
     }
 
     // delete

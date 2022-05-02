@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Book } from 'src/app/shared/book/book.model';
 import { BookshelfService } from '../bookshelf.service';
 
@@ -9,10 +10,11 @@ import { BookshelfService } from '../bookshelf.service';
   styleUrls: ['./book-list.component.css']
 })
 
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
   // @Input() book: Book;
   myBooks: Book[] = [];
   sortField: string = 'author';
+  private bookListSub: Subscription;
 
   constructor(private bookshelfService: BookshelfService,
               private router: Router,
@@ -23,7 +25,7 @@ export class BookListComponent implements OnInit {
       this.myBooks = this.bookshelfService.getBooks();
 
     // Listen for changes on the global "myBooks" array and update the  local version
-    this.bookshelfService.bookListChanged.subscribe((books: Book[]) => {
+    this.bookListSub = this.bookshelfService.bookListChanged.subscribe((books: Book[]) => {
     this.myBooks = books;
     });
   }
@@ -43,4 +45,7 @@ export class BookListComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.bookListSub.unsubscribe();
+  }
   }

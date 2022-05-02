@@ -13,10 +13,13 @@ export class BookResultsComponent implements OnInit {
 
 
   constructor(private libraryService: LibraryService,
-              private bookshelfService: BookshelfService,) {}
+              private bookshelfService: BookshelfService) {}
 
   ngOnInit(): void {
     this.allBooks = this.libraryService.getBooks();
+    this.libraryService.bookListChanged.subscribe((newBookArray: Book[]) => {
+      this.allBooks = newBookArray;
+    });
   }
 
   onSaveBook(book: Book) {
