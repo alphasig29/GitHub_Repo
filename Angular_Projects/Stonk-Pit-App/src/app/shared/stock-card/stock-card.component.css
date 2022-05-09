@@ -14,7 +14,9 @@ li {
   margin-right: 0rem;
 
 }
-
+.card:hover {
+  transform: rotateY(180deg);
+}
 .tab {
   padding-left: 14px;
 }

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, throwError, map, Observable, Subject } from "rxjs";
 import { Constants } from "../config/constants";
 import { APIAllSEctorStockQuote} from "../shared/models/api-stock-quote.model"
+import { StockAPIService } from "../shared/api/stock-api-service";
 
 
 
@@ -33,8 +34,8 @@ export class SectorDataService{
   private sp500Data: StockQuote =
     new StockQuote('S&P 500', 'SPY', 439.67, -0.25, -0.06, 439.39, 445.00, 447.57, 44.11, 0, 0, 0);
 
-  constructor(private http: HttpClient,
-              private config: Constants){}
+  constructor(private config: Constants,
+    private stockApiService: StockAPIService) { }
 
   getSectorData(): StockQuote[] {
     // sort the array by % change
@@ -54,23 +55,18 @@ export class SectorDataService{
 
     }
 
-    refreshSectorData(){
-      // build URL to call the API
-      const apiUrl = this.config.API_MOCK_ENDPOINT +
-          this.config.API_OPTION +
-          this.config.API_KEY_TEST;
-      // call API
-      this.callJsonGetRestApi(apiUrl).subscribe((data: any)=>{
-        this.refressedSectorData = data;
-
-        // console.log(data);
-        this.loadSectorArrayWithNewData(this.sectorData,this.refressedSectorData);
-        // sort the array by % change
-        this.sectorData = this.sortArray(this.sectorData);
-        // return a copy of the data to prevent external updates
-        this.sectorDataChanged.next(this.sectorData.slice());
-
-      });
+  refreshSectorData() {
+      // send request to get current data
+    this.stockApiService.getAllSectorData().subscribe(returnData => {
+      this.refressedSectorData = returnData;
+      this.loadSectorArrayWithNewData(this.sectorData,this.refressedSectorData);
+      // sort the array by % change
+      this.sectorData = this.sortArray(this.sectorData);
+      // return a copy of the data to prevent external updates
+      this.sectorDataChanged.next(this.sectorData.slice());
+    }, error => {
+      console.log('Error Retrieving Sector data: ' + error);
+    });
 
     }
 
@@ -98,18 +94,4 @@ export class SectorDataService{
 
     }
 
-    private callJsonGetRestApi(url):Observable<any> {
-      return this.http.get<APIAllSEctorStockQuote[]>(url)
-        .pipe(map((data: any) => {
-        //handle api 200 response code here or you wanted to manipulate to response
-          return data;
-        }),
-          catchError((error) => {    // handle error
-            if (error.status == 404) {
-              //Handle Response code here
-            }
-            return throwError(() => new Error('errorReceivingJSON'));
-          })
-        );
-    }
 }
