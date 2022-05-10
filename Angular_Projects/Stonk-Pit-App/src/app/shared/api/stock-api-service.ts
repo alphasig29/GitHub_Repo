@@ -8,6 +8,7 @@ import { Constants } from "src/app/config/constants";
 import { APIAllSEctorStockQuote } from "../models/api-stock-quote.model";
 import { catchError, throwError, map } from "rxjs";
 
+
 @Injectable({ providedIn: 'root' })
 
 export class StockAPIService {
@@ -15,11 +16,12 @@ export class StockAPIService {
     constructor(private http: HttpClient,
       private config: Constants) { }
 
+
   getAllSectorData() {
       // build URL to call the API
-      const apiUrl = this.config.API_MOCK_ENDPOINT +
-          this.config.API_OPTION +
-      this.config.API_KEY_TEST;
+      // const apiUrl = this.config.API_MOCK_ENDPOINT +
+      //     this.config.API_OPTION +
+      // this.config.API_KEY_TEST;
 
     // build the list of params to pass to retrieve all sector data
     let searchParams = new HttpParams();
