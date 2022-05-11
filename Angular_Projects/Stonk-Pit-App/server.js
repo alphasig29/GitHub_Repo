@@ -1,8 +1,9 @@
 //import
-const express = required("express");
+const express = require("express");
 
 // init express
 const app = express();
+
 
 // serve static build filesf rom teh 'dist' dir
 app.use(express.static("./dist/stonk-pit-app"))

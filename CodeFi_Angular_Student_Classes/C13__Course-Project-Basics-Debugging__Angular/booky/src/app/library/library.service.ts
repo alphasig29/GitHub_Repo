@@ -45,7 +45,7 @@ export class LibraryService {
 
   fetchBooksFromAPI(query:string) {
     const formattedQuery = query.split(" ").join('+').toLowerCase();
-    this.http.get(`http://openlibrary.org/search.json?q=${formattedQuery}`)
+    this.http.get(`https://openlibrary.org/search.json?q=${formattedQuery}`)
     .subscribe((searchResponse: any) => {
       const mostReleventBooks = searchResponse.docs.slice(0,7);
       this.saveBooksToGlobalArray(mostReleventBooks);
